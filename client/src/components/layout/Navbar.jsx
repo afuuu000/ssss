@@ -150,13 +150,21 @@ const Navbar = ({ isMenuOpen, setIsMenuOpen }) => {
                     />
                   </svg>
                 </button>
-                <div className="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition">
+                <div className="absolute left-0 mt-2 w-44 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition">
                   <div className="py-1">
                     <Link
-                      to="/sell-with-stake"
+                      to="/exit-wondows"
                       className="block px-4 py-2 text-gray-800 hover:bg-gray-100"
                     >
-                      Sell with Stake
+                      Exit windows
+                    </Link>
+                  </div>
+                  <div className="py-1">
+                    <Link
+                      to="/sell-your-property"
+                      className="block px-4 py-2 text-gray-800 hover:bg-gray-100"
+                    >
+                      Sell your property
                     </Link>
                   </div>
                 </div>
