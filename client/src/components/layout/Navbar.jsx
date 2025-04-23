@@ -7,13 +7,17 @@ const Navbar = ({ isMenuOpen, setIsMenuOpen }) => {
 
   // Handle scroll events
   useEffect(() => {
+    let timeoutId = null;
     const handleScroll = () => {
-      const currentScrollPos = window.pageYOffset;
-      const isScrollingDown = prevScrollPos < currentScrollPos;
+      if (timeoutId) return;
 
-      // Only hide when scrolling down and after scrolling past 100px
-      setVisible(currentScrollPos < 100 || !isScrollingDown);
-      setPrevScrollPos(currentScrollPos);
+      timeoutId = setTimeout(() => {
+        const currentScrollPos = window.pageYOffset;
+        const isScrollingDown = prevScrollPos < currentScrollPos;
+        setVisible(currentScrollPos < 100 || !isScrollingDown);
+        setPrevScrollPos(currentScrollPos);
+        timeoutId = null;
+      }, 100); // Adjust timing as needed
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -52,7 +56,7 @@ const Navbar = ({ isMenuOpen, setIsMenuOpen }) => {
             {/* Desktop Navigation */}
             <nav className="ml-[-220px] hidden lg:flex space-x-4">
               <div className="group relative">
-                <button className="flex  text-gray-800 text-[14px] font-semibold hover:text-green-500">
+                <button className="flex  text-gray-800 text-[14px] font-semibold hover:text-green-500  ">
                   Investments
                   <svg
                     className="ml-1 h-4 w-4"
@@ -68,7 +72,7 @@ const Navbar = ({ isMenuOpen, setIsMenuOpen }) => {
                     />
                   </svg>
                 </button>
-                <div className="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition">
+                <div className="absolute  left-0 mt-2 w-48 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition">
                   <div className="py-1">
                     <Link
                       to="/properties"
@@ -304,79 +308,22 @@ const Navbar = ({ isMenuOpen, setIsMenuOpen }) => {
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="lg:hidden bg-white border-b border-gray-200">
-          <div className="container mx-auto px-4 py-2">
-            <nav className="flex flex-col space-y-4">
-              <Link
-                to="/properties"
-                className="text-gray-800 py-2 border-b border-gray-100"
-              >
-                Properties
-              </Link>
-              <Link
-                to="/funds"
-                className="text-gray-800 py-2 border-b border-gray-100"
-              >
-                Funds
-              </Link>
-              <div className="flex items-center py-2 border-b border-gray-100">
-                <Link to="/automation" className="text-gray-800">
-                  Automation
-                </Link>
-                <span className="ml-2 px-1.5 py-0.5 text-xs bg-green-500 text-white font-medium rounded">
-                  NEW
-                </span>
-              </div>
-              <Link
-                to="/golden-visa"
-                className="text-gray-800 py-2 border-b border-gray-100"
-              >
-                Golden Visa
-              </Link>
-              <Link
-                to="/retirement-visa"
-                className="text-gray-800 py-2 border-b border-gray-100"
-              >
-                Retirement Visa
-              </Link>
-              <Link
-                to="/sell-with-stake"
-                className="text-gray-800 py-2 border-b border-gray-100"
-              >
-                Sell with Stake
-              </Link>
-              <Link
-                to="/blog"
-                className="text-gray-800 py-2 border-b border-gray-100"
-              >
-                Blog
-              </Link>
-              <Link
-                to="/faqs"
-                className="text-gray-800 py-2 border-b border-gray-100"
-              >
-                FAQs
-              </Link>
-              <Link
-                to="/glossary"
-                className="text-gray-800 py-2 border-b border-gray-100"
-              >
-                Glossary
-              </Link>
-
-              <div className="flex items-center justify-between pt-4 border-2">
-                <Link to="/login" className="text-gray-800 font-medium">
-                  Login
-                </Link>
-                <Link
-                  to="/signup"
-                  className="bg-[#121726] text-white px-4 py-2 "
-                >
-                  Sign up
-                </Link>
-              </div>
-            </nav>
-          </div>
+        <div className="lg:hidden bg-white shadow-md">
+          <nav className="flex flex-col space-y-2 p-4">
+            <Link to="/properties" className="text-gray-800">
+              Properties
+            </Link>
+            <Link to="/funds" className="text-gray-800">
+              Funds
+            </Link>
+            <Link to="/automation" className="text-gray-800">
+              Automation
+            </Link>
+            <Link to="/golden-visa" className="text-gray-800">
+              Golden Visa
+            </Link>
+            {/* Add other mobile links here */}
+          </nav>
         </div>
       )}
     </header>
