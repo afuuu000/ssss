@@ -213,9 +213,9 @@ const Navbar = ({ isMenuOpen, setIsMenuOpen }) => {
             </nav>
 
             {/* Auth Buttons */}
-            <div className="hidden lg:flex items-center space-x-4">
+            <div className="hidden lg:flex items-center space-x-3">
               <div className="relative group">
-                <button className="flex items-center text-gray-700 border font-semibold text-[14px] border-gray-300 rounded-[8px] px-3 py-1.5">
+                <button className="flex items-center text-gray-700 border font-semibold text-[14px] border-gray-300 rounded-[8px] px-4 py-2">
                   <span className="flex items-center">
                     <svg
                       className="w-4 h-4 text-green-300 mr-1"
@@ -250,7 +250,7 @@ const Navbar = ({ isMenuOpen, setIsMenuOpen }) => {
 
               <Link
                 to="/login"
-                className="text-gray-700 font-semibold text-[14px] px-4 py-2 hover:text-green-500 border-1 rounded-[8px]"
+                className="text-gray-700 font-semibold text-[14px] border border-gray-300  px-4 py-2 hover:text-green-500  rounded-[8px]"
               >
                 Login
               </Link>
