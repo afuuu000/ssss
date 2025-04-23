@@ -196,10 +196,10 @@ const HowItWorks = () => {
       <div className="mx-auto max-w-[1000px]">
         {/* Header */}
         <div className="text-center py-16 md:py-20">
-          <h3 className="text-[#30D48C] text-lg font-medium mb-3">
+          <h3 className="text-[#209477] font-semibold font-serif text-lg leading-6 mb-3">
             How it works
           </h3>
-          <h2 className="text-4xl md:text-5xl font-bold">
+          <h2 className="text-4xl md:text-5xl leading-14 font-bold">
             Build an income-generating
             <br />
             real estate portfolio, easily
