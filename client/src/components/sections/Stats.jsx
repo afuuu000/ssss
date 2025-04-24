@@ -2,7 +2,7 @@ import React from "react";
 
 const Stats = () => {
   return (
-    <section className="pb-20 pt-32 bg-[#f8fafb] overflow-hidden relative">
+    <section className="pb-20 pt-32 bg-[#F6F7F9] overflow-hidden relative">
       <div className="container mx-auto p-5 max-w-[1200px] text-center ">
         <p className="text-[#209476] font-medium mb-4">
           The global leader in digital real estate investing

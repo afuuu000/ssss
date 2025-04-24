@@ -1,273 +1,136 @@
 import React from "react";
+import sideImg2 from "../../assets/images/marinapull.avif";
+import sideImg3 from "../../assets/images/burjkhalifa.avif";
+import pakisland from "../../assets/images/pakislands.png";
 
 const DubaiFunds = () => {
   return (
-    <section className="bg-white py-20 overflow-hidden">
-      <div className="container mx-auto px-6 max-w-[1200px]">
-        <div className="flex flex-col lg:flex-row items-center gap-8">
-          {/* Phone image mockup - Left */}
-          <div className="w-full lg:w-1/2 relative">
-            <div className="bg-[#00C853] rounded-3xl p-6 lg:p-12 relative z-0 overflow-hidden">
-              {/* Main phone mockup */}
-              <div className="relative z-20 mx-auto max-w-sm">
-                <div className="rounded-[38px] bg-white overflow-hidden shadow-xl border-8 border-black">
-                  <div className="h-6 bg-black relative">
-                    <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-20 h-4 bg-black rounded-b-xl"></div>
-                  </div>
+    <div className="bg-[#F6F7F9]">
+      <section className=" py-20 overflow-hidden max-w-[1200px] mx-auto">
+        <div className="container bg-white  rounded-2xl  mx-auto px-12 py-10">
+          <div className="flex flex-col lg:flex-row items-center  gap-8">
+            {/* Phone image mockup - Left */}
+            <div className="pl-6 w-full lg:w-1/2 relative">
+              <div className="bg-[#30D48C] max-h-[456px] max-w-[548px]  rounded-3xl p-6 lg:p-12 relative z-0 overflow-hidden">
+                {/* Main phone mockup */}
+                <div className="relative z-20 mx-auto max-w-sm">
+                  <div className="h-6  relative"></div>
                   <div className="relative">
-                    <div className="h-48 bg-blue-100">
-                      {/* Navigation controls */}
-                      <div className="absolute top-2 left-2 bg-white rounded-full p-1">
-                        <svg
-                          className="w-6 h-6"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                        >
-                          <path
-                            d="M15 19l-7-7 7-7"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          />
-                        </svg>
-                      </div>
-                      <div className="absolute top-2 right-2 flex space-x-2">
-                        <div className="bg-white rounded-full p-1">
-                          <svg
-                            className="w-6 h-6"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                          >
-                            <path
-                              d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"
-                              strokeWidth="2"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                            />
-                          </svg>
-                        </div>
-                        <div className="bg-white rounded-full p-1">
-                          <svg
-                            className="w-6 h-6"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                          >
-                            <path
-                              d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"
-                              strokeWidth="2"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                            />
-                          </svg>
-                        </div>
-                      </div>
+                    <div className="h-full object-contain relative overflow-hidden">
+                      {/* Main property image */}
+                      <img
+                        src={pakisland}
+                        alt="Park Islands, Dubai Marina"
+                        className="w-[295px]  mx-auto object-contain"
+                      />
                     </div>
-                    <div className="p-3">
-                      <h3 className="font-bold text-lg mb-2">
-                        Park Islands, Dubai Marina
-                      </h3>
+                  </div>
+                </div>
 
-                      <div className="flex space-x-4 mb-2">
-                        <div className="flex items-center">
-                          <svg
-                            className="w-4 h-4 text-gray-500 mr-1"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                          >
-                            <path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M3 7h18" />
-                          </svg>
-                          <span className="text-sm">2</span>
-                        </div>
-                        <div className="flex items-center">
-                          <svg
-                            className="w-4 h-4 text-gray-500 mr-1"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                          >
-                            <path d="M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                          </svg>
-                          <span className="text-sm">3</span>
-                        </div>
-                        <div className="flex items-center">
-                          <svg
-                            className="w-4 h-4 text-gray-500 mr-1"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                          >
-                            <path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M3 7h18" />
-                          </svg>
-                          <span className="text-sm">#1020</span>
-                        </div>
-                        <div className="flex items-center">
-                          <svg
-                            className="w-4 h-4 text-gray-500 mr-1"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                          >
-                            <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4m14-2l-5-5-5 5m5-5v12" />
-                          </svg>
-                          <span className="text-sm">170 sqm</span>
-                        </div>
-                      </div>
+                {/* Property card - Top right */}
+                <div className="absolute top-30 z-20 right-20 transform rotate-5 shadow-xl  max-w-[140px]">
+                  <div className="bg-white rounded-xl p-3">
+                    <div className="relative  w-full h-20 rounded-lg mb-2 ">
+                      <img
+                        src={sideImg3}
+                        alt="Boulevard Point, Downtown Dubai"
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div className="text-sm">
+                      <p className="font-medium mb-1">
+                        Boulevard Point, Downtown Dubai
+                      </p>
+                      <p className="text-[#30D48C] font-bold">+10.4%</p>
+                    </div>
+                  </div>
+                </div>
 
-                      <div className="flex mb-4 space-x-3">
-                        <button className="flex items-center justify-center rounded-md bg-gray-100 px-3 py-2 text-sm">
-                          <svg
-                            className="w-4 h-4 mr-1"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                          >
-                            <path d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
-                          </svg>
-                          Virtual Tour
-                        </button>
-                        <button className="flex items-center justify-center rounded-md bg-gray-100 px-3 py-2 text-sm">
-                          <svg
-                            className="w-4 h-4 mr-1"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                          >
-                            <path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                          </svg>
-                          6 photos
-                        </button>
-                      </div>
-
-                      <div className="mb-4">
-                        <div className="flex justify-between items-center mb-1">
-                          <span className="text-[#00C853] font-bold text-xl">
-                            AED 1,305,990
-                          </span>
-                          <span className="text-gray-600 text-sm">
-                            purchase price
-                          </span>
-                        </div>
-                        <div className="flex items-center mb-2">
-                          <svg
-                            className="w-4 h-4 text-gray-400 mr-1"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                          >
-                            <path d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-                          </svg>
-                          <span className="text-gray-600 text-sm">
-                            368 investors
-                          </span>
-                          <span className="text-gray-400 text-xs ml-auto flex items-center">
-                            <svg
-                              className="w-4 h-4 mr-1"
-                              viewBox="0 0 24 24"
-                              fill="currentColor"
-                            >
-                              <path
-                                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                                strokeWidth="2"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                              />
-                            </svg>
-                            18 days left
-                          </span>
-                        </div>
-                        <div className="w-full bg-gray-200 rounded-full h-2 mb-1">
-                          <div className="bg-[#00C853] h-2 rounded-full w-[75%]"></div>
-                        </div>
-                        <div className="flex justify-between text-xs">
-                          <span className="text-[#00C853] font-medium">
-                            75% funded
-                          </span>
-                          <span className="text-gray-600">
-                            AED 764,000 available
-                          </span>
-                        </div>
-                      </div>
+                {/* Property card - Bottom left */}
+                <div className="absolute bottom-10 left-10 z-10 transform -rotate-12 shadow-xl max-w-[220px]">
+                  <div className="bg-white rounded-xl p-3">
+                    <div className="relative w-full h-24 rounded-lg mb-2 overflow-hidden">
+                      <img
+                        src={sideImg2}
+                        alt="Marina Gate 1, Dubai Marina"
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div className="text-sm">
+                      <p className="font-medium mb-1">
+                        Marina Gate 1, Dubai Marina
+                      </p>
+                      <p className="text-[#2FB183] text-[16px] font-bold">
+                        +12.4%
+                      </p>
                     </div>
                   </div>
                 </div>
               </div>
-
-              {/* Property card - Top right */}
-              <div className="absolute top-8 right-10 z-10 transform rotate-6 shadow-xl max-w-[220px]">
-                <div className="bg-white rounded-xl p-3">
-                  <div className="relative w-full h-28 bg-blue-100 rounded-lg mb-2 overflow-hidden">
-                    {/* Image would go here */}
-                  </div>
-                  <div className="text-sm">
-                    <p className="font-medium mb-1">
-                      Boulevard Point, Downtown Dubai
-                    </p>
-                    <p className="text-[#00C853] font-bold">+10.4%</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Property card - Bottom left */}
-              <div className="absolute bottom-10 left-6 z-10 transform -rotate-6 shadow-xl max-w-[220px]">
-                <div className="bg-white rounded-xl p-3">
-                  <div className="relative w-full h-28 bg-blue-100 rounded-lg mb-2 overflow-hidden">
-                    {/* Image would go here */}
-                  </div>
-                  <div className="text-sm">
-                    <p className="font-medium mb-1">
-                      Marina Gate 1, Dubai Marina
-                    </p>
-                    <p className="text-[#00C853] font-bold">+12.4%</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Content - Right */}
-          <div className="w-full lg:w-1/2 text-left">
-            <div className="inline-flex items-center bg-gray-100 rounded-full px-4 py-2 text-sm mb-6">
-              <div className="mr-2 w-6 h-4 bg-red-500 relative overflow-hidden rounded-sm">
-                <div className="absolute top-0 left-0 w-full h-full bg-white opacity-20">
-                  <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-1/2 h-full bg-white"></div>
-                  <div className="absolute top-1/2 left-0 transform -translate-y-1/2 w-full h-1/2 bg-white"></div>
-                </div>
-              </div>
-              <span className="font-medium">United Arab Emirates</span>
             </div>
 
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-[#121726] leading-tight">
-              Invest in the world's best performing residential market
-            </h2>
+            {/* Content - Right */}
+            <div className="w-full lg:w-1/2 text-left ">
+              <div className="inline-flex items-center border border-[#D1D3D7] rounded-full px-3 py-2 text-sm mb-4">
+                <div className="w-6 h-6 mr-4 relative">
+                  <div className="absolute inset-0 rounded-full overflow-hidden">
+                    <div className="w-full h-full bg-black  absolute top-0 left-0"></div>
+                    <div className="w-full h-1/3 bg-green-600 absolute top-0 left-0"></div>
+                    <div className="w-full h-1/3 bg-white absolute top-1/3 left-0"></div>
+                    <div className="w-1/3 h-full bg-red-600 absolute top-0 left-0"></div>
+                  </div>
+                </div>
+                <span className="font-bold text-[14px] text-[#121C30]">
+                  United Arab Emirates
+                </span>
+              </div>
 
-            <p className="text-lg text-gray-700 mb-8 max-w-lg">
-              Purchase shares in high yield properties in Dubai and start
-              building a passive income stream today
-            </p>
+              <h2 className="text-4xl md:text-4xl font-bold mb-2 text-[#121C30] leading-tight">
+                Invest in the world's best performing residential market
+              </h2>
 
-            <div className="flex flex-wrap gap-4">
-              <a
-                href="#"
-                className="inline-flex items-center justify-center bg-gray-900 text-white px-6 py-3 rounded-lg font-medium"
-              >
-                Learn more
-              </a>
-              <a
-                href="#"
-                className="inline-flex items-center justify-center border border-gray-300 bg-white px-6 py-3 rounded-lg text-gray-800 font-medium"
-              >
-                <svg
-                  className="w-5 h-5 mr-2 text-[#00C853]"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
+              <p className="text-lg text-[#5A616E] mb-6 max-w-lg">
+                Purchase shares in high yield properties in Dubai and start
+                building a passive income stream today
+              </p>
+
+              <div className="flex flex-wrap gap-4">
+                <a
+                  href="#"
+                  className="inline-flex items-center justify-center bg-[#121C30] text-white px-4 py-2 rounded-lg font-medium"
                 >
-                  <circle cx="12" cy="12" r="10" />
-                  <path d="M10 8l6 4-6 4V8z" fill="white" />
-                </svg>
-                Watch how it works
-              </a>
+                  Learn more
+                </a>
+                <a
+                  href="#"
+                  className="inline-flex items-center justify-center bg-white border border-gray-300 px-4 py-3 rounded-lg text-[#121C30] font-medium"
+                >
+                  <svg
+                    className="w-5 h-5 mr-2 text-[#30D48C]"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <circle
+                      cx="12"
+                      cy="12"
+                      r="12"
+                      fill="currentColor"
+                      fillOpacity="0.6"
+                    />
+                    <path
+                      d="M15.4531 11.2969L10.5781 8.17188C10.4688 8.09375 10.3438 8.07812 10.2188 8.10938C10.0938 8.14062 10 8.21875 9.9375 8.34375C9.875 8.46875 9.85938 8.59375 9.89062 8.71875C9.92188 8.84375 10 8.9375 10.125 9L14.625 11.9062C14.7188 11.9688 14.7812 12.0625 14.7812 12.1875C14.7812 12.3125 14.7188 12.4062 14.625 12.4688L10.125 15.375C10 15.4375 9.92188 15.5312 9.89062 15.6562C9.85938 15.7812 9.875 15.9062 9.9375 16.0312C10 16.1562 10.0781 16.2344 10.1875 16.2656C10.2969 16.2969 10.4219 16.2812 10.5469 16.2031L15.4219 13.0781C15.5469 13 15.6406 12.8906 15.7031 12.75C15.7656 12.6094 15.7969 12.4375 15.7969 12.2344C15.7969 12.0312 15.7656 11.8594 15.7031 11.7188C15.6406 11.5781 15.5625 11.4688 15.4531 11.2969Z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                  Watch how it works
+                </a>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
   );
 };
 

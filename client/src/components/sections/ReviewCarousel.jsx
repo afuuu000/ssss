@@ -41,7 +41,7 @@ const reviews = [
 
 const ReviewCarousel = () => {
   return (
-    <section className="py-16 bg-gray-50">
+    <section className="py-16 bg-white">
       <div className="container mx-auto px-3">
         <div className="overflow-hidden relative">
           <div className="flex animate-marquee">

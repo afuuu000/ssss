@@ -11,19 +11,11 @@ const googlePlaySVG =
 
 const Hero = () => {
   return (
-<<<<<<< HEAD
-    <section className="pt-20 pb-8 md:py-16 overflow-hidden relative bg-white">
-      <div className="container mx-auto px-4 max-w-[1200px]">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
-          <div className="max-w-xl mx-auto lg:mx-0 text-center lg:text-left">
-            <div className="inline-flex items-center bg-green-50 rounded-full px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm mb-6 sm:mb-8 mx-auto lg:mx-0">
-=======
     <section className="py-8 md:py-16 overflow-hidden relative bg-white">
       <div className="container mx-auto px-4 w-[1200px]">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mt-42 ">
           <div className="max-w-xl text-center lg:text-left">
             <div className="inline-flex items-center bg-green-50  border-green-300 border rounded-full px-4 py-1 text-sm mb-8 mx-auto lg:mx-0">
->>>>>>> b81701e20ac0b5ff8f201b54ec93d7e2a5b5f67b
               <span className="flex h-2 w-2 relative mr-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
@@ -37,35 +29,14 @@ const Hero = () => {
               Build your wealth through{" "}
               <span className="text-[#41CE8E]">real estate</span>
             </h1>
-<<<<<<< HEAD
-            <p className="text-base sm:text-lg text-gray-600 mb-6 sm:mb-8">
-=======
             <p className="text-[16px] tracking-tighter font-medium text-gray-600 mb-8">
->>>>>>> b81701e20ac0b5ff8f201b54ec93d7e2a5b5f67b
               Thousands of investors all over the world are using Stake to
               access income generating real estate deals in high growth markets,
               from only AED 500
             </p>
 
-<<<<<<< HEAD
-            <div className="flex space-x-4 justify-center lg:justify-start mb-8">
-              <a href="#appstore" className="flex-shrink-0">
-                <img
-                  src={appStoreSVG}
-                  alt="Download on App Store"
-                  className="h-10 sm:h-12"
-                />
-              </a>
-              <a href="#googleplay" className="flex-shrink-0">
-                <img
-                  src={googlePlaySVG}
-                  alt="Get it on Google Play"
-                  className="h-10 sm:h-12 w-auto"
-                />
-              </a>
-=======
             <div className=" flex  gap-1 ">
-              <div className="h-18 w-[190px]   rounded ">
+              <div className="h-18 w-[150px]   rounded ">
                 <a href="#applesote">
                   <img
                     src={appStoreSVG}
@@ -75,7 +46,7 @@ const Hero = () => {
                 </a>
               </div>
 
-              <div className="h-18 w-[250px]   rounded ">
+              <div className="h-18 w-[190px]   rounded ">
                 <a href="#googleplay">
                   <img
                     src={googlePlaySVG}
@@ -85,7 +56,6 @@ const Hero = () => {
                   />
                 </a>
               </div>
->>>>>>> b81701e20ac0b5ff8f201b54ec93d7e2a5b5f67b
             </div>
           </div>
 

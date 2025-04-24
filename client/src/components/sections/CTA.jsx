@@ -7,18 +7,19 @@ const googlePlaySVG =
 
 import phoneImg from "../../assets/images/mobileportfolio.avif";
 import sideImg from "../../assets/images/invest.png";
-import sideImg2 from "../../assets/images/burjalarab.avif";
-import sideImg3 from "../../assets/images/dubaicitywalk.avif";
+import sideImg2 from "../../assets/images/marinapull.avif";
+import sideImg3 from "../../assets/images/burjkhalifa.avif";
 const CTA = () => {
   return (
-    <section className="py-10 mx-auto container px-4 ">
-      <div className="mx-auto h-[400px] max-w-[1000px] rounded-3xl overflow-hidden flex flex-col md:flex-row">
+    <div className="bg-[#F6F7F9]">
+    <section className="py-20  mx-auto container px-4  ">
+      <div className="mx-auto h-[430px] max-w-[1000px] rounded-4xl overflow-hidden flex flex-col md:flex-row">
         {/* Left side - Green background */}
-        <div className="bg-[#30D48C] pl-9 py-4 w-full md:w-1/2 flex flex-col justify-center">
-          <h4 className="text-white text-lg font-medium mb-4">
+        <div className="bg-[#30D48C] pl-6 sm:pl-12 py-4 w-full md:w-1/2 flex flex-col justify-center">
+          <h4 className="text-white text-[16px] font-medium mb-4">
             Download our app
           </h4>
-          <h2 className="text-white text-4xl tracking-tight font-sans font-bold leading-[57.4px] mb-10">
+          <h2 className="text-white text-4xl md:text-5xl tracking-tight font-sans font-bold leading-tight md:leading-[57.4px] mb-6 md:mb-10">
             The modern way for
             <br />
             anyone to invest in
@@ -26,8 +27,8 @@ const CTA = () => {
             real estate
           </h2>
 
-          <div className="flex ">
-            <div className="h-18 w-[190px]   rounded ">
+          <div className="flex">
+            <div className="h-18 w-[150px] rounded">
               <a href="#applesote">
                 <img
                   src={appStoreSVG}
@@ -37,13 +38,12 @@ const CTA = () => {
               </a>
             </div>
 
-            <div className="h-18 w-[250px]   rounded ">
+            <div className="h-18 w-[190px] rounded">
               <a href="#googleplay">
                 <img
                   src={googlePlaySVG}
                   alt="Get it on Google Play"
-                  className="h-full w-full object-cover rounded
-                  "
+                  className="h-full w-full object-cover rounded"
                 />
               </a>
             </div>
@@ -51,31 +51,61 @@ const CTA = () => {
         </div>
 
         {/* Right side - Light/transparent background */}
-        <div className="bg-[#30D48C] relative  w-full md:w-1/2 ">
+        <div className="bg-[#30D48C] relative w-full md:w-1/2">
           <img
             src={phoneImg}
             alt="phoneImg"
-            className="w-full h-full object-contain md:-rotate-25 md:scale-200  "
+            className="w-full h-full object-contain md:-rotate-22 mt-11 md:scale-185"
           />
           <img
             src={sideImg}
             alt="investimg"
             className="absolute -top-5 -right-20 -rotate-25"
           />
-          <img
-            src={sideImg2}
-            alt="investimg"
-            className="absolute -bottom-10 -left-10 -rotate-25 w-60
-            "
-          />
-          <img
-            src={sideImg3}
-            alt="img"
-            className="absolute bottom-10 -right-20  -rotate-25 w-60"
-          />
+
+          {/* Marina Gate Property Card - styled like the reference image */}
+          <div className="absolute  top-48 -left-1 -rotate-20 z-20 bg-white rounded-xl shadow-lg w-36 overflow-hidden">
+            <div className="w-full relative">
+              <img
+                src={sideImg2}
+                alt="Marina Gate"
+                className="w-full h-28 bg-white px-2 py-2 object-cover rounded-2xl"
+              />
+            </div>
+            <div className="p-2">
+              <h4 className="text-gray-800 font-medium text-[12px]">
+                Marina Gate 1, Dubai
+              </h4>
+              <p className="text-gray-600 text-xs">Marina</p>
+              <p className="text-[#41CE8E] font-bold text-[16px] mt-1">
+                +12.4%
+              </p>
+            </div>
+          </div>
+
+          {/* khalifa Property Card - styled like the reference image */}
+          <div className="absolute  bottom-12 right-0.5 -rotate-12 z-20 bg-white rounded-xl shadow-lg w-36 overflow-hidden">
+            <div className="w-full relative">
+              <img
+                src={sideImg3}
+                alt="Marina Gate"
+                className="w-full h-28 bg-white px-2 py-2 object-cover rounded-2xl"
+              />
+            </div>
+            <div className="p-2">
+              <h4 className="text-gray-800 font-medium text-[12px]">
+                Boulevard Point,
+              </h4>
+              <p className="text-gray-600 text-xs"> Downtown Dubai</p>
+              <p className="text-[#41CE8E] font-bold text-[16px] mt-1">
+              +10.4%
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
+    </div>
   );
 };
 

@@ -56,11 +56,7 @@ const Navbar = ({ isMenuOpen, setIsMenuOpen }) => {
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex lg:ml-[-120px] xl:ml-[-220px] space-x-4">
               <div className="group relative">
-<<<<<<< HEAD
-                <button className="flex text-gray-800 text-[14px] font-semibold hover:text-green-500">
-=======
                 <button className="flex  text-gray-800 text-[14px] font-semibold hover:text-green-500  ">
->>>>>>> b81701e20ac0b5ff8f201b54ec93d7e2a5b5f67b
                   Investments
                   <svg
                     className="ml-1 h-4 w-4"
@@ -313,84 +309,6 @@ const Navbar = ({ isMenuOpen, setIsMenuOpen }) => {
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-<<<<<<< HEAD
-        <div className="lg:hidden bg-white border-b border-gray-200 shadow-lg">
-          <div className="container mx-auto px-4 py-4">
-            <nav className="flex flex-col space-y-3">
-              <Link
-                to="/properties"
-                className="text-gray-800 py-2 border-b border-gray-100"
-              >
-                Properties
-              </Link>
-              <Link
-                to="/funds"
-                className="text-gray-800 py-2 border-b border-gray-100"
-              >
-                Funds
-              </Link>
-              <div className="flex items-center py-2 border-b border-gray-100">
-                <Link to="/automation" className="text-gray-800">
-                  Automation
-                </Link>
-                <span className="ml-2 px-1.5 py-0.5 text-xs bg-green-500 text-white font-medium rounded">
-                  NEW
-                </span>
-              </div>
-              <Link
-                to="/golden-visa"
-                className="text-gray-800 py-2 border-b border-gray-100"
-              >
-                Golden Visa
-              </Link>
-              <Link
-                to="/retirement-visa"
-                className="text-gray-800 py-2 border-b border-gray-100"
-              >
-                Retirement Visa
-              </Link>
-              <Link
-                to="/sell-with-stake"
-                className="text-gray-800 py-2 border-b border-gray-100"
-              >
-                Sell with Stake
-              </Link>
-              <Link
-                to="/blog"
-                className="text-gray-800 py-2 border-b border-gray-100"
-              >
-                Blog
-              </Link>
-              <Link
-                to="/faqs"
-                className="text-gray-800 py-2 border-b border-gray-100"
-              >
-                FAQs
-              </Link>
-              <Link
-                to="/glossary"
-                className="text-gray-800 py-2 border-b border-gray-100"
-              >
-                Glossary
-              </Link>
-
-              <div className="flex flex-col sm:flex-row sm:items-center space-y-3 sm:space-y-0 sm:space-x-3 pt-4">
-                <Link
-                  to="/login"
-                  className="text-gray-800 font-medium border border-gray-300 rounded-lg py-2 px-4 text-center"
-                >
-                  Login
-                </Link>
-                <Link
-                  to="/signup"
-                  className="bg-[#121726] text-white px-4 py-2 rounded-lg text-center"
-                >
-                  Sign up
-                </Link>
-              </div>
-            </nav>
-          </div>
-=======
         <div className="lg:hidden bg-white shadow-md">
           <nav className="flex flex-col space-y-2 p-4">
             <Link to="/properties" className="text-gray-800">
@@ -407,7 +325,6 @@ const Navbar = ({ isMenuOpen, setIsMenuOpen }) => {
             </Link>
             {/* Add other mobile links here */}
           </nav>
->>>>>>> b81701e20ac0b5ff8f201b54ec93d7e2a5b5f67b
         </div>
       )}
     </header>

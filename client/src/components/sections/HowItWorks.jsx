@@ -192,8 +192,8 @@ const HowItWorks = () => {
   }, []);
 
   return (
-    <div ref={sectionRef} className="relative">
-      <div className="mx-auto max-w-[1000px] px-4">
+    <div ref={sectionRef} className="relative bg-[#F6F7F9]">
+      <div className=" mx-auto max-w-[1000px] px-4">
         {/* Header */}
         <div className="text-center py-16 md:py-20">
           <h3 className="text-[#30D48C] text-lg font-medium mb-3">
