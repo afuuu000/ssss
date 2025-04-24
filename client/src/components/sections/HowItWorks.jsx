@@ -195,11 +195,11 @@ const HowItWorks = () => {
     <div ref={sectionRef} className="relative">
       <div className="mx-auto max-w-[1000px] px-4">
         {/* Header */}
-        <div className="text-center py-12 md:py-20">
+        <div className="text-center py-16 md:py-20">
           <h3 className="text-[#30D48C] text-lg font-medium mb-3">
             How it works
           </h3>
-          <h2 className="text-3xl md:text-5xl font-bold">
+          <h2 className="text-4xl md:text-5xl font-bold">
             Build an income-generating
             <br className="hidden sm:block" />
             real estate portfolio, easily

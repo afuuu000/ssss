@@ -7,13 +7,17 @@ const Navbar = ({ isMenuOpen, setIsMenuOpen }) => {
 
   // Handle scroll events
   useEffect(() => {
+    let timeoutId = null;
     const handleScroll = () => {
-      const currentScrollPos = window.pageYOffset;
-      const isScrollingDown = prevScrollPos < currentScrollPos;
+      if (timeoutId) return;
 
-      // Only hide when scrolling down and after scrolling past 100px
-      setVisible(currentScrollPos < 100 || !isScrollingDown);
-      setPrevScrollPos(currentScrollPos);
+      timeoutId = setTimeout(() => {
+        const currentScrollPos = window.pageYOffset;
+        const isScrollingDown = prevScrollPos < currentScrollPos;
+        setVisible(currentScrollPos < 100 || !isScrollingDown);
+        setPrevScrollPos(currentScrollPos);
+        timeoutId = null;
+      }, 100); // Adjust timing as needed
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -52,7 +56,11 @@ const Navbar = ({ isMenuOpen, setIsMenuOpen }) => {
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex lg:ml-[-120px] xl:ml-[-220px] space-x-4">
               <div className="group relative">
+<<<<<<< HEAD
                 <button className="flex text-gray-800 text-[14px] font-semibold hover:text-green-500">
+=======
+                <button className="flex  text-gray-800 text-[14px] font-semibold hover:text-green-500  ">
+>>>>>>> b81701e20ac0b5ff8f201b54ec93d7e2a5b5f67b
                   Investments
                   <svg
                     className="ml-1 h-4 w-4"
@@ -68,7 +76,7 @@ const Navbar = ({ isMenuOpen, setIsMenuOpen }) => {
                     />
                   </svg>
                 </button>
-                <div className="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition">
+                <div className="absolute  left-0 mt-2 w-48 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition">
                   <div className="py-1">
                     <Link
                       to="/properties"
@@ -305,6 +313,7 @@ const Navbar = ({ isMenuOpen, setIsMenuOpen }) => {
 
       {/* Mobile Menu */}
       {isMenuOpen && (
+<<<<<<< HEAD
         <div className="lg:hidden bg-white border-b border-gray-200 shadow-lg">
           <div className="container mx-auto px-4 py-4">
             <nav className="flex flex-col space-y-3">
@@ -381,6 +390,24 @@ const Navbar = ({ isMenuOpen, setIsMenuOpen }) => {
               </div>
             </nav>
           </div>
+=======
+        <div className="lg:hidden bg-white shadow-md">
+          <nav className="flex flex-col space-y-2 p-4">
+            <Link to="/properties" className="text-gray-800">
+              Properties
+            </Link>
+            <Link to="/funds" className="text-gray-800">
+              Funds
+            </Link>
+            <Link to="/automation" className="text-gray-800">
+              Automation
+            </Link>
+            <Link to="/golden-visa" className="text-gray-800">
+              Golden Visa
+            </Link>
+            {/* Add other mobile links here */}
+          </nav>
+>>>>>>> b81701e20ac0b5ff8f201b54ec93d7e2a5b5f67b
         </div>
       )}
     </header>
