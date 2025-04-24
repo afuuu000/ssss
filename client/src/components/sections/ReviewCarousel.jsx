@@ -41,16 +41,14 @@ const reviews = [
 
 const ReviewCarousel = () => {
   return (
-    <section className="py-20 bg-gray-50">
-      <div className="container mx-auto px-4">
-       
-
+    <section className="py-16 bg-gray-50">
+      <div className="container mx-auto px-3">
         <div className="overflow-hidden relative">
           <div className="flex animate-marquee">
             {reviews.map((review, index) => (
               <div
                 key={index}
-                className="flex-none w-full max-w-md mx-4 p-6 bg-white rounded-xl shadow-sm border border-gray-100"
+                className="flex-none w-full max-w-md mx-1 p-5 bg-white rounded-xl shadow-sm border border-gray-100"
               >
                 <div className="flex justify-between items-center mb-4">
                   <div className="flex">

@@ -10,23 +10,25 @@ import {
 
 const Footer = () => {
   return (
-    <footer className="bg-[#121C30] text-white py-16">
-      <div className="container mx-auto px-4 w-[1000px]">
+    <footer className="bg-[#121C30] text-white py-10 md:py-16">
+      <div className="container mx-auto px-4 max-w-[1000px] md:w-[1000px]">
         {/* Logo */}
         <div className="mb-8">
           <Link to="/" className="flex items-center">
-            <span className="text-white text-2xl font-semibold w-[221px]">
+            <span className="text-white text-2xl font-semibold">
               sta<span className="text-green-400">k</span>e
             </span>
           </Link>
         </div>
 
         {/* Navigation Links - 4 columns */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-y-10 gap-x-8 mb-10">
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-y-8 gap-x-4 md:gap-x-8 mb-10">
           {/* Column 1 - Product */}
           <div>
-            <h3 className="text-gray-400 text-sm font-medium mb-6">Product</h3>
-            <ul className="space-y-4">
+            <h3 className="text-gray-400 text-sm font-medium mb-4 md:mb-6">
+              Product
+            </h3>
+            <ul className="space-y-3 md:space-y-4">
               <li>
                 <Link to="/properties" className="hover:text-green-400">
                   Properties
@@ -53,7 +55,7 @@ const Footer = () => {
             <h3 className="text-gray-400 text-sm font-medium mb-4">
               Visa Programs
             </h3>
-            <ul className="space-y-4">
+            <ul className="space-y-3 md:space-y-4">
               <li>
                 <Link to="/golden-visa" className="hover:text-green-400">
                   Golden Visa
@@ -70,7 +72,7 @@ const Footer = () => {
           {/* Column 3 - Learn */}
           <div>
             <h3 className="text-gray-400 text-sm font-medium mb-4">Learn</h3>
-            <ul className="space-y-4">
+            <ul className="space-y-3 md:space-y-4">
               <li>
                 <Link to="/blog" className="hover:text-green-400">
                   Blog
@@ -92,7 +94,7 @@ const Footer = () => {
           {/* Column 4 - Company */}
           <div>
             <h3 className="text-gray-400 text-sm font-medium mb-4">Company</h3>
-            <ul className="space-y-4">
+            <ul className="space-y-3 md:space-y-4">
               <li>
                 <Link to="/about" className="hover:text-green-400">
                   About
@@ -110,32 +112,33 @@ const Footer = () => {
         {/* Divider */}
         <div className="border-t text-[#414959] mb-6"></div>
 
-        {/* Copyright, Legal links, and Social - All on one line */}
-        <div className="flex flex-wrap md:flex-nowrap items-center justify-between mb-6">
-          <div className="text-gray-400 text-sm">
+        {/* Copyright, Legal links, and Social */}
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-6">
+          <div className="text-gray-400 text-sm order-3 md:order-1">
             © 2025 Stake. All rights reserved.
           </div>
 
-          <div className="ml-[-100px] flex space-x-3 text-sm text-gray-400">
-          <div className="border h-6 border-gray-800 ml-1"></div>
+          {/* Legal Links */}
+          <div className="flex flex-wrap gap-x-3 gap-y-2 text-sm text-gray-400 order-2">
             <Link to="/terms" className="hover:text-white">
               Terms of use
             </Link>
-            <div className="border h-6 text-[#414959]  ml-1"></div>
+            <div className="hidden md:block border-l h-4 text-[#414959]"></div>
             <Link to="/risks" className="hover:text-white">
               Key risks
             </Link>
-            <div className="border h-6 text-[#414959]  ml-1"></div>
+            <div className="hidden md:block border-l h-4 text-[#414959]"></div>
             <Link to="/privacy" className="hover:text-white">
               Privacy policy
             </Link>
-            <div className="border h-6 text-[#414959]  ml-1"></div>
+            <div className="hidden md:block border-l h-4 text-[#414959]"></div>
             <Link to="/cookies" className="hover:text-white">
               Cookies notice
             </Link>
           </div>
 
-          <div className="flex items-center space-x-5">
+          {/* Social Icons */}
+          <div className="flex items-center space-x-5 order-1 md:order-3">
             <a
               href="https://facebook.com/stake"
               target="_blank"
@@ -183,7 +186,7 @@ const Footer = () => {
         <div className="border-t text-[#414959] mb-6"></div>
 
         {/* Legal text */}
-        <div className="text-[#80858F] text-xs leading-[19.5px] space-y-3">
+        <div className="text-[#80858F] text-xs leading-[19.5px] space-y-4">
           <p>
             Stake Properties Limited is regulated by the Dubai Financial
             Services Authority (DFSA) as an Operator of a Property Investment

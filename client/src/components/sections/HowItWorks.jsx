@@ -193,21 +193,97 @@ const HowItWorks = () => {
 
   return (
     <div ref={sectionRef} className="relative">
-      <div className="mx-auto max-w-[1000px]">
+      <div className="mx-auto max-w-[1000px] px-4">
         {/* Header */}
-        <div className="text-center py-16 md:py-20">
+        <div className="text-center py-12 md:py-20">
           <h3 className="text-[#30D48C] text-lg font-medium mb-3">
             How it works
           </h3>
-          <h2 className="text-4xl md:text-5xl font-bold">
+          <h2 className="text-3xl md:text-5xl font-bold">
             Build an income-generating
-            <br />
+            <br className="hidden sm:block" />
             real estate portfolio, easily
           </h2>
         </div>
 
-        {/* Main content with sticky phone */}
-        <div className="relative flex flex-col md:flex-row">
+        {/* Mobile view for the sections */}
+        <div className="md:hidden space-y-12 pb-16">
+          {sections.map((section, index) => (
+            <div 
+              key={section.id}
+              className={`${section.bgColor} rounded-2xl p-6 transition-all duration-300`}
+            >
+              <div className="mb-6">
+                <h3 className={`${section.accentColor} text-lg font-medium mb-2`}>
+                  {section.title}
+                </h3>
+                <h2 className={`${section.textColor} text-2xl font-bold mb-3`}>
+                  {section.heading}
+                </h2>
+                <p className={`${section.textColor} opacity-80 text-base mb-4`}>
+                  {section.description}
+                </p>
+                {section.extraContent}
+              </div>
+              
+              {/* App screenshot container */}
+              <div className="relative w-full h-[420px] mx-auto">
+                <div className={`${section.bgColor} rounded-2xl p-4 flex items-center justify-center overflow-hidden shadow-lg w-full h-full`}>
+                  <div className="relative w-full h-full max-w-[240px] mx-auto">
+                    <div className="bg-white rounded-2xl shadow-md overflow-hidden w-full h-full flex items-center justify-center">
+                      <img
+                        src={section.appImageUrl}
+                        alt={`${section.title} app screenshot`}
+                        className="object-cover w-full h-full"
+                      />
+                    </div>
+
+                    {/* Floating UI elements specific to each section */}
+                    {section.id === "browse" && (
+                      <div className="absolute right-[-20px] top-[20%] bg-white rounded-2xl shadow-xl p-2 transform rotate-6">
+                        <img
+                          src="/images/ui/property-card.jpg"
+                          alt="Property"
+                          className="w-24 h-16 object-cover rounded-lg"
+                        />
+                      </div>
+                    )}
+
+                    {section.id === "invest" && (
+                      <div className="absolute bottom-[20%] right-[-15px] bg-white rounded-2xl shadow-xl p-2">
+                        <div className="font-medium text-sm">AED 500</div>
+                        <div className="text-xs text-gray-500">~$136.15</div>
+                      </div>
+                    )}
+
+                    {section.id === "earn" && (
+                      <div className="absolute top-[15%] left-[-15px] bg-white rounded-2xl shadow-xl p-2">
+                        <div className="text-xs">All time returns</div>
+                        <div className="font-bold text-sm">AED 89,000</div>
+                        <span className="inline-block bg-green-100 text-green-600 text-xs rounded-full px-2 py-0.5">
+                          30.8%
+                        </span>
+                      </div>
+                    )}
+
+                    {section.id === "sell" && (
+                      <div className="absolute top-[60%] right-[-20px] bg-white rounded-2xl shadow-xl p-2 transform rotate-12">
+                        <img
+                          src="/images/ui/property-card-2.jpg"
+                          alt="Property"
+                          className="w-20 h-14 object-cover rounded-lg"
+                        />
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Desktop view with sticky phone */}
+        <div className="relative hidden md:flex md:flex-row">
           {/* Left side: scrollable text content */}
           <div className="md:w-1/2 md:pr-12">
             {sections.map((section, index) => (

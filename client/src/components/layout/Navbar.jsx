@@ -40,19 +40,19 @@ const Navbar = ({ isMenuOpen, setIsMenuOpen }) => {
       </div>
 
       {/* Main Navbar */}
-      <div className="bg-white py-6 border-b border-gray-100">
-        <div className="container w-[1200px] mx-auto px-4">
+      <div className="bg-white py-4 md:py-6 border-b border-gray-100">
+        <div className="container mx-auto px-4 max-w-[1200px]">
           <div className="flex items-center justify-between">
             <Link to="/" className="flex items-center">
-              <span className="text-black text-3xl font-semibold">
+              <span className="text-black text-2xl md:text-3xl font-semibold">
                 sta<span className="text-green-400">k</span>e
               </span>
             </Link>
 
             {/* Desktop Navigation */}
-            <nav className="ml-[-220px] hidden lg:flex space-x-4">
+            <nav className="hidden lg:flex lg:ml-[-120px] xl:ml-[-220px] space-x-4">
               <div className="group relative">
-                <button className="flex  text-gray-800 text-[14px] font-semibold hover:text-green-500">
+                <button className="flex text-gray-800 text-[14px] font-semibold hover:text-green-500">
                   Investments
                   <svg
                     className="ml-1 h-4 w-4"
@@ -250,7 +250,7 @@ const Navbar = ({ isMenuOpen, setIsMenuOpen }) => {
 
               <Link
                 to="/login"
-                className="text-gray-700 font-semibold text-[14px] border border-gray-300  px-4 py-2 hover:text-green-500  rounded-[8px]"
+                className="text-gray-700 font-semibold text-[14px] border border-gray-300 px-4 py-2 hover:text-green-500 rounded-[8px]"
               >
                 Login
               </Link>
@@ -267,6 +267,7 @@ const Navbar = ({ isMenuOpen, setIsMenuOpen }) => {
             <button
               className="lg:hidden text-gray-800"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label="Toggle mobile menu"
             >
               {isMenuOpen ? (
                 <svg
@@ -304,9 +305,9 @@ const Navbar = ({ isMenuOpen, setIsMenuOpen }) => {
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="lg:hidden bg-white border-b border-gray-200">
-          <div className="container mx-auto px-4 py-2">
-            <nav className="flex flex-col space-y-4">
+        <div className="lg:hidden bg-white border-b border-gray-200 shadow-lg">
+          <div className="container mx-auto px-4 py-4">
+            <nav className="flex flex-col space-y-3">
               <Link
                 to="/properties"
                 className="text-gray-800 py-2 border-b border-gray-100"
@@ -364,13 +365,16 @@ const Navbar = ({ isMenuOpen, setIsMenuOpen }) => {
                 Glossary
               </Link>
 
-              <div className="flex items-center justify-between pt-4 border-2">
-                <Link to="/login" className="text-gray-800 font-medium">
+              <div className="flex flex-col sm:flex-row sm:items-center space-y-3 sm:space-y-0 sm:space-x-3 pt-4">
+                <Link
+                  to="/login"
+                  className="text-gray-800 font-medium border border-gray-300 rounded-lg py-2 px-4 text-center"
+                >
                   Login
                 </Link>
                 <Link
                   to="/signup"
-                  className="bg-[#121726] text-white px-4 py-2 "
+                  className="bg-[#121726] text-white px-4 py-2 rounded-lg text-center"
                 >
                   Sign up
                 </Link>

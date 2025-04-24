@@ -240,11 +240,16 @@ const Trust = () => {
             We're backed by
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-12 items-center justify-items-center">
-            <img
-              src="/placeholder-logo-1.svg"
-              alt="MEVP"
-              className="h-10 opacity-80"
-            />
+            <svg
+              style={{ width: "100%", height: "100%" }}
+              viewBox="0 0 126 35"
+              preserveAspectRatio="none"
+              width="100%"
+              height="100%"
+            >
+              <use href="#svg727047839_934"></use>
+            </svg>
+
             <img
               src="/placeholder-logo-2.svg"
               alt="Wael Group"
