@@ -8,7 +8,7 @@ const googlePlaySVG =
 import phoneImg from "../../assets/images/mobileportfolio.avif";
 import sideImg from "../../assets/images/invest.png";
 import sideImg2 from "../../assets/images/marinapull.avif";
-import sideImg3 from "../../assets/images/burjkhalifa.avif";
+import sideImg3 from "../../assets/images/khalifa.avif";
 const CTA = () => {
   return (
     <div className="bg-[#F6F7F9]">

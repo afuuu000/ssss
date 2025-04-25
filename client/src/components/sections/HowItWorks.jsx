@@ -1,391 +1,601 @@
 import React, { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
-
-const StepCard = ({ number, title, description, isActive = false }) => {
-  return (
-    <div
-      className={`p-6 rounded-xl transition-all ${
-        isActive
-          ? "bg-primary/5 border-l-4 border-primary"
-          : "bg-white hover:bg-gray-50"
-      }`}
-    >
-      <div className="flex items-start">
-        <div
-          className={`w-8 h-8 rounded-full flex items-center justify-center mr-4 ${
-            isActive ? "bg-primary text-white" : "bg-gray-100 text-gray-500"
-          }`}
-        >
-          {number}
-        </div>
-        <div>
-          <h3 className="font-bold text-lg mb-2">{title}</h3>
-          <p className="text-gray-600">{description}</p>
-        </div>
-      </div>
-    </div>
-  );
-};
+import {
+  motion,
+  useScroll,
+  useTransform,
+  AnimatePresence,
+} from "framer-motion";
+import sideImg2 from "../../assets/images/marinapull.avif";
+import sideImg3 from "../../assets/images/burjkhalifa.avif";
+import pakisland from "../../assets/images/pakislands.png";
 
 const HowItWorks = () => {
   const sectionRef = useRef(null);
-  const [activeSection, setActiveSection] = useState(0);
+  const imagesRef = useRef(null);
+  const [activeSection, setActiveSection] = useState(0); // Start with first section active
+  const [hasScrolledToSection, setHasScrolledToSection] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const { scrollY } = useScroll();
 
-  // Array of section data
-  const sections = [
+  // Track scroll position to determine which section is active
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!sectionRef.current) return;
+
+      const sectionRect = sectionRef.current.getBoundingClientRect();
+      const sectionHeight = sectionRect.height;
+      const sectionTop = sectionRect.top;
+      const windowHeight = window.innerHeight;
+
+      // Check if section is in view - start animation when section top reaches 1/3 of viewport height
+      const sectionInView = sectionTop < windowHeight / 3;
+      setHasScrolledToSection(sectionInView);
+
+      // Calculate scroll position relative to the section
+      if (sectionInView) {
+        // Calculate progress based on how far we've scrolled into the section
+        // This starts at 0 when section is at 1/3 of viewport and reaches 1 when we've scrolled through the section
+        const scrolledAmount = Math.min(
+          sectionHeight * 0.7, // Only use 70% of section height for scroll progress
+          Math.max(0, windowHeight / 3 - sectionTop)
+        );
+
+        const progress = scrolledAmount / (sectionHeight * 0.7);
+        setScrollProgress(Math.min(1, Math.max(0, progress)));
+
+        // Determine which step is active based on progress
+        const newActiveSection = Math.min(3, Math.floor(progress * 4));
+        setActiveSection(newActiveSection);
+      } else {
+        // Reset when section is not in view
+        setScrollProgress(0);
+        setActiveSection(0);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    // Initial check
+    handleScroll();
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Define steps data
+  const steps = [
     {
-      id: "browse",
       title: "Browse",
-      heading: "Access prime real estate across multiple markets",
+      subtitle: "Access prime real estate across multiple markets",
       description:
         "Sign up in less than 3 minutes and browse our collection of global properties and funds, sourced by experts",
-      bgColor: "bg-white",
-      textColor: "text-[#121726]",
-      accentColor: "text-[#30D48C]",
-      appImageUrl: "/images/how-it-works/browse-app.png",
-      extraContent: (
-        <div className="flex mt-6 gap-4">
-          <a href="#" className="block">
-            <img
-              src="https://developer.apple.com/app-store/marketing/guidelines/images/badge-download-on-the-app-store.svg"
-              alt="Download on App Store"
-              className="h-10"
-            />
-          </a>
-          <a href="#" className="block">
-            <img
-              src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
-              alt="Get it on Google Play"
-              className="h-10"
-            />
-          </a>
-        </div>
-      ),
+      mainImage: pakisland,
+      bgColor: "#30D48C",
     },
     {
-      id: "invest",
       title: "Invest",
-      heading: "Grab a piece of the ones you love, from only AED 500",
+      subtitle: "Grab a piece of the ones you love, from only AED 500",
       description:
         "Skip the hassle, and buy shares in your favourite deals, no matter where you are in the world.",
-      bgColor: "bg-[#121726]",
-      textColor: "text-white",
-      accentColor: "text-[#30D48C]",
-      appImageUrl: "/images/how-it-works/invest-app.png",
-      extraContent: (
-        <div className="flex mt-6 items-center gap-4">
-          <img src="/images/payment/visa.svg" alt="Visa" className="h-6" />
-          <img
-            src="/images/payment/mastercard.svg"
-            alt="Mastercard"
-            className="h-6"
-          />
-          <img
-            src="/images/payment/applepay.svg"
-            alt="Apple Pay"
-            className="h-6"
-          />
-        </div>
-      ),
+      mainImage: pakisland,
+      bgColor: "#1A2049",
     },
     {
-      id: "earn",
       title: "Earn",
-      heading: "Enjoy regular passive income with no effort",
+      subtitle: "Enjoy regular passive income with no effort",
       description:
         "Sit back and earn consistent rental income from your brand new real estate portfolio",
-      bgColor: "bg-[#FFC940]",
-      textColor: "text-[#121726]",
-      accentColor: "text-[#121726]",
-      appImageUrl: "/images/how-it-works/earn-app.png",
-      extraContent: (
-        <div className="flex items-center mt-6 text-[#121726]">
-          <span className="inline-flex items-center">
-            <svg
-              className="w-6 h-6 mr-2 text-[#30D48C]"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-            >
-              <path d="M3 6c0-1.1.9-2 2-2h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6zm5 10a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm5-1a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
-            </svg>
-            Paid directly to your Stake wallet
-          </span>
-        </div>
-      ),
+      mainImage: pakisland,
+      bgColor: "#FFC947",
     },
     {
-      id: "sell",
       title: "Sell",
-      heading: "Tap into liquidity when you need it most",
+      subtitle: "Tap into liquidity when you need it most",
       description:
         "Realise your full investment appreciation at maturity or take early profits by selling within our community",
-      bgColor: "bg-white",
-      textColor: "text-[#121726]",
-      accentColor: "text-[#30D48C]",
-      appImageUrl: "/images/how-it-works/sell-app.png",
-      extraContent: (
-        <div className="flex flex-col mt-6 space-y-3">
-          <div className="flex items-center">
-            <svg
-              className="w-6 h-6 mr-2 text-[#30D48C]"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-            >
-              <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-            </svg>
-            <span>Sell during our Exit Windows</span>
-            <span className="ml-4 px-2 py-1 bg-[#30D48C] bg-opacity-10 text-[#30D48C] rounded-full text-xs">
-              Every 6 months
-            </span>
-          </div>
-          <div className="flex items-center">
-            <svg
-              className="w-6 h-6 mr-2 text-[#30D48C]"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-            >
-              <path d="M7 7h10v10H7z" />
-            </svg>
-            <span>Full sale of properties and funds</span>
-            <span className="ml-4 px-2 py-1 bg-[#30D48C] bg-opacity-10 text-[#30D48C] rounded-full text-xs">
-              2-5 year holding terms
-            </span>
-          </div>
-        </div>
-      ),
+      mainImage: pakisland,
+      bgColor: "#4E63BD",
     },
   ];
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const index = parseInt(entry.target.dataset.index);
-            setActiveSection(index);
-          }
-        });
-      },
-      {
-        root: null,
-        rootMargin: "-50% 0px",
-        threshold: 0.1,
-      }
-    );
+  // Calculate finer-grained progress for animations
+  const sectionProgress = scrollProgress * 4;
+  const currentSectionProgress = sectionProgress - activeSection;
 
-    const sectionElement = sectionRef.current;
-    if (sectionElement) {
-      const sectionDivs = sectionElement.querySelectorAll(".section-trigger");
-      sectionDivs.forEach((div) => {
-        observer.observe(div);
-      });
+  // Calculate text positions based on active section and scroll progress
+  const getTextStyles = (index) => {
+    // If not scrolled to the section yet, position all texts below except first one
+    if (!hasScrolledToSection) {
+      if (index === 0) {
+        return {
+          transform: "translateY(0)",
+          opacity: 1,
+        };
+      } else {
+        return {
+          transform: "translateY(100%)",
+          opacity: 0,
+        };
+      }
     }
 
-    return () => {
-      if (sectionElement) {
-        const sectionDivs = sectionElement.querySelectorAll(".section-trigger");
-        sectionDivs.forEach((div) => {
-          observer.unobserve(div);
-        });
-      }
-    };
-  }, []);
+    // Current visible section
+    if (index === activeSection) {
+      return {
+        transform: `translateY(${-100 * currentSectionProgress}%)`,
+        opacity: 1 - currentSectionProgress,
+      };
+    }
+    // Next section coming in
+    else if (index === activeSection + 1) {
+      return {
+        transform: `translateY(${100 - 100 * currentSectionProgress}%)`,
+        opacity: currentSectionProgress,
+      };
+    }
+    // Previous sections (already scrolled past)
+    else if (index < activeSection) {
+      return {
+        transform: "translateY(-100%)",
+        opacity: 0,
+      };
+    }
+    // Future sections (not visible yet)
+    else {
+      return {
+        transform: "translateY(100%)",
+        opacity: 0,
+      };
+    }
+  };
 
   return (
-    <div ref={sectionRef} className="relative bg-[#F6F7F9]">
-      <div className=" mx-auto max-w-[1000px] px-4">
-        {/* Header */}
-        <div className="text-center py-16 md:py-20">
-          <h3 className="text-[#30D48C] text-lg font-medium mb-3">
-            How it works
-          </h3>
-          <h2 className="text-4xl md:text-5xl font-bold">
-            Build an income-generating
-            <br className="hidden sm:block" />
-            real estate portfolio, easily
-          </h2>
-        </div>
+    <>
+      {/* Fixed viewport height section for steps */}
+      <section
+        ref={sectionRef}
+        className="relative min-h-screen flex items-center py-20 bg-white overflow-hidden"
+        style={{ height: "calc(100vh + 400px)" }} // Extra height to enable scrolling through steps
+      >
+        <div className="sticky top-0 left-0 w-full h-screen flex items-center z-10">
+          <div className="container mx-auto px-4 max-w-[1200px]">
+            {/* Section title */}
+            <div className="text-center mb-10">
+              <h2 className="text-4xl font-bold mb-4">How It Works</h2>
+              <p className="text-gray-600 max-w-2xl mx-auto">
+                Build your real estate portfolio in a few simple steps
+              </p>
+            </div>
 
-        {/* Mobile view for the sections */}
-        <div className="md:hidden space-y-12 pb-16">
-          {sections.map((section, index) => (
-            <div 
-              key={section.id}
-              className={`${section.bgColor} rounded-2xl p-6 transition-all duration-300`}
-            >
-              <div className="mb-6">
-                <h3 className={`${section.accentColor} text-lg font-medium mb-2`}>
-                  {section.title}
-                </h3>
-                <h2 className={`${section.textColor} text-2xl font-bold mb-3`}>
-                  {section.heading}
-                </h2>
-                <p className={`${section.textColor} opacity-80 text-base mb-4`}>
-                  {section.description}
-                </p>
-                {section.extraContent}
-              </div>
-              
-              {/* App screenshot container */}
-              <div className="relative w-full h-[420px] mx-auto">
-                <div className={`${section.bgColor} rounded-2xl p-4 flex items-center justify-center overflow-hidden shadow-lg w-full h-full`}>
-                  <div className="relative w-full h-full max-w-[240px] mx-auto">
-                    <div className="bg-white rounded-2xl shadow-md overflow-hidden w-full h-full flex items-center justify-center">
-                      <img
-                        src={section.appImageUrl}
-                        alt={`${section.title} app screenshot`}
-                        className="object-cover w-full h-full"
-                      />
+            {/* Content grid */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+              {/* Left side - Scrolling text sections */}
+              <div className="relative h-[450px] overflow-hidden">
+                {steps.map((step, index) => {
+                  const styles = getTextStyles(index);
+
+                  return (
+                    <div
+                      key={index}
+                      className="absolute inset-0 transition-all duration-700 ease-in-out"
+                      style={styles}
+                    >
+                      <div className="mb-6">
+                        <h3 className="text-[#41CE8E] text-xl font-medium mb-4">
+                          {step.title}
+                        </h3>
+                        <h2 className="text-3xl md:text-4xl font-bold mb-6">
+                          {step.subtitle}
+                        </h2>
+                        <p className="text-gray-600 text-lg">
+                          {step.description}
+                        </p>
+                      </div>
+
+                      {/* App store buttons - only for first section */}
+                      {index === 0 && (
+                        <div className="flex gap-3 mt-6">
+                          <a href="#" className="h-14 w-[130px]">
+                            <img
+                              src="https://developer.apple.com/app-store/marketing/guidelines/images/badge-download-on-the-app-store.svg"
+                              alt="Download on App Store"
+                              className="h-full w-full object-contain"
+                            />
+                          </a>
+                          <a href="#" className="h-14 w-[160px]">
+                            <img
+                              src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
+                              alt="Get it on Google Play"
+                              className="h-full w-full object-contain"
+                            />
+                          </a>
+                        </div>
+                      )}
+
+                      {/* Payment methods - only for second section */}
+                      {index === 1 && (
+                        <div className="flex gap-3 mt-6">
+                          <div className="flex items-center space-x-4">
+                            <img
+                              src="https://placeholder.pics/svg/48/000000/FFFFFF/VISA"
+                              alt="Visa"
+                              className="h-8"
+                            />
+                            <img
+                              src="https://placeholder.pics/svg/48/000000/FFFFFF/MASTERCARD"
+                              alt="Mastercard"
+                              className="h-8"
+                            />
+                            <img
+                              src="https://placeholder.pics/svg/48/000000/FFFFFF/APPLEPAY"
+                              alt="Apple Pay"
+                              className="h-8"
+                            />
+                          </div>
+                        </div>
+                      )}
+
+                      {/* Wallet info - only for third section */}
+                      {index === 2 && (
+                        <div className="flex items-center gap-2 mt-6 text-gray-700">
+                          <svg
+                            className="w-6 h-6 text-[#41CE8E]"
+                            fill="currentColor"
+                            viewBox="0 0 20 20"
+                          >
+                            <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z" />
+                            <path
+                              fillRule="evenodd"
+                              d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z"
+                              clipRule="evenodd"
+                            />
+                          </svg>
+                          <span>Paid directly to your Stake wallet</span>
+                        </div>
+                      )}
+
+                      {/* Exit windows - only for fourth section */}
+                      {index === 3 && (
+                        <div className="space-y-4 mt-6">
+                          <div className="flex items-center gap-2 text-gray-700">
+                            <svg
+                              className="w-6 h-6 text-[#41CE8E]"
+                              fill="currentColor"
+                              viewBox="0 0 20 20"
+                            >
+                              <path
+                                fillRule="evenodd"
+                                d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z"
+                                clipRule="evenodd"
+                              />
+                            </svg>
+                            <span>Sell during our Exit Windows</span>
+                            <span className="ml-auto text-sm bg-[#e8f9f1] text-[#41CE8E] px-2 py-1 rounded-full">
+                              Every 6 months
+                            </span>
+                          </div>
+                          <div className="flex items-center gap-2 text-gray-700">
+                            <svg
+                              className="w-6 h-6 text-[#41CE8E]"
+                              fill="currentColor"
+                              viewBox="0 0 20 20"
+                            >
+                              <path
+                                fillRule="evenodd"
+                                d="M5 2a1 1 0 011 1v1h1a1 1 0 010 2H6v1a1 1 0 01-2 0V6H3a1 1 0 010-2h1V3a1 1 0 011-1zm0 10a1 1 0 011 1v1h1a1 1 0 110 2H6v1a1 1 0 11-2 0v-1H3a1 1 0 110-2h1v-1a1 1 0 011-1zM12 2a1 1 0 01.967.744L14.146 7.2 17.5 9.134a1 1 0 010 1.732l-3.354 1.935-1.18 4.455a1 1 0 01-1.933 0L9.854 12.8 6.5 10.866a1 1 0 010-1.732l3.354-1.935 1.18-4.455A1 1 0 0112 2z"
+                                clipRule="evenodd"
+                              />
+                            </svg>
+                            <span>Full sale of properties and funds</span>
+                            <span className="ml-auto text-sm bg-[#e8f9f1] text-[#41CE8E] px-2 py-1 rounded-full">
+                              2-5 year holding terms
+                            </span>
+                          </div>
+                        </div>
+                      )}
                     </div>
+                  );
+                })}
+              </div>
 
-                    {/* Floating UI elements specific to each section */}
-                    {section.id === "browse" && (
-                      <div className="absolute right-[-20px] top-[20%] bg-white rounded-2xl shadow-xl p-2 transform rotate-6">
-                        <img
-                          src="/images/ui/property-card.jpg"
-                          alt="Property"
-                          className="w-24 h-16 object-cover rounded-lg"
-                        />
+              {/* Right side - Fixed image section that changes */}
+              <div ref={imagesRef} className="relative h-[500px]">
+                {/* Browse section - Green background */}
+                <div
+                  className={`absolute w-full transition-opacity duration-700 ease-in-out ${
+                    activeSection === 0 ? "opacity-100" : "opacity-0"
+                  }`}
+                >
+                  <div className="pl-6 w-full relative">
+                    <div
+                      className="max-h-[456px] max-w-[548px] rounded-3xl p-6 lg:p-12 relative z-0 overflow-hidden"
+                      style={{ backgroundColor: "#30D48C" }}
+                    >
+                      {/* Main phone mockup */}
+                      <div className="relative z-20 mx-auto max-w-sm">
+                        <div className="h-6 relative"></div>
+                        <div className="relative">
+                          <div className="h-full object-contain relative overflow-hidden">
+                            {/* Main property image */}
+                            <img
+                              src={pakisland}
+                              alt="Browse visualization"
+                              className="w-[295px] mx-auto object-contain"
+                            />
+                          </div>
+                        </div>
                       </div>
-                    )}
 
-                    {section.id === "invest" && (
-                      <div className="absolute bottom-[20%] right-[-15px] bg-white rounded-2xl shadow-xl p-2">
-                        <div className="font-medium text-sm">AED 500</div>
-                        <div className="text-xs text-gray-500">~$136.15</div>
+                      {/* Property card - Top right */}
+                      <div className="absolute top-30 z-20 right-20 transform rotate-5 shadow-xl max-w-[140px]">
+                        <div className="bg-white rounded-xl p-3">
+                          <div className="relative w-full h-20 rounded-lg mb-2">
+                            <img
+                              src={sideImg3}
+                              alt="Boulevard Point, Downtown Dubai"
+                              className="w-full h-full object-cover rounded-lg"
+                            />
+                          </div>
+                          <div className="text-sm">
+                            <p className="font-medium mb-1">
+                              Boulevard Point, Downtown Dubai
+                            </p>
+                            <p className="text-[#30D48C] font-bold">+10.4%</p>
+                          </div>
+                        </div>
                       </div>
-                    )}
 
-                    {section.id === "earn" && (
-                      <div className="absolute top-[15%] left-[-15px] bg-white rounded-2xl shadow-xl p-2">
-                        <div className="text-xs">All time returns</div>
-                        <div className="font-bold text-sm">AED 89,000</div>
-                        <span className="inline-block bg-green-100 text-green-600 text-xs rounded-full px-2 py-0.5">
-                          30.8%
-                        </span>
+                      {/* Property card - Bottom left */}
+                      <div className="absolute bottom-10 left-10 z-10 transform -rotate-12 shadow-xl max-w-[220px]">
+                        <div className="bg-white rounded-xl p-3">
+                          <div className="relative w-full h-24 rounded-lg mb-2 overflow-hidden">
+                            <img
+                              src={sideImg2}
+                              alt="Marina Gate 1, Dubai Marina"
+                              className="w-full h-full object-cover"
+                            />
+                          </div>
+                          <div className="text-sm">
+                            <p className="font-medium mb-1">
+                              Marina Gate 1, Dubai Marina
+                            </p>
+                            <p className="text-[#2FB183] text-[16px] font-bold">
+                              +12.4%
+                            </p>
+                          </div>
+                        </div>
                       </div>
-                    )}
+                    </div>
+                  </div>
+                </div>
 
-                    {section.id === "sell" && (
-                      <div className="absolute top-[60%] right-[-20px] bg-white rounded-2xl shadow-xl p-2 transform rotate-12">
-                        <img
-                          src="/images/ui/property-card-2.jpg"
-                          alt="Property"
-                          className="w-20 h-14 object-cover rounded-lg"
-                        />
+                {/* Invest section - Dark blue background */}
+                <div
+                  className={`absolute w-full transition-opacity duration-700 ease-in-out ${
+                    activeSection === 1 ? "opacity-100" : "opacity-0"
+                  }`}
+                >
+                  <div className="pl-6 w-full relative">
+                    <div
+                      className="max-h-[456px] max-w-[548px] rounded-3xl p-6 lg:p-12 relative z-0 overflow-hidden"
+                      style={{ backgroundColor: "#1A2049" }}
+                    >
+                      {/* Main phone mockup */}
+                      <div className="relative z-20 mx-auto max-w-sm">
+                        <div className="h-6 relative"></div>
+                        <div className="relative">
+                          <div className="h-full object-contain relative overflow-hidden">
+                            {/* Main property image */}
+                            <img
+                              src={pakisland}
+                              alt="Invest visualization"
+                              className="w-[295px] mx-auto object-contain"
+                            />
+                          </div>
+                        </div>
                       </div>
-                    )}
+
+                      {/* Property card - Top right */}
+                      <div className="absolute top-30 z-20 right-20 transform rotate-5 shadow-xl max-w-[140px]">
+                        <div className="bg-white rounded-xl p-3">
+                          <div className="relative w-full h-20 rounded-lg mb-2">
+                            <img
+                              src={sideImg3}
+                              alt="Boulevard Point, Downtown Dubai"
+                              className="w-full h-full object-cover rounded-lg"
+                            />
+                          </div>
+                          <div className="text-sm">
+                            <p className="font-medium mb-1">
+                              Boulevard Point, Downtown Dubai
+                            </p>
+                            <p className="text-[#30D48C] font-bold">+10.4%</p>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Property card - Bottom left */}
+                      <div className="absolute bottom-10 left-10 z-10 transform -rotate-12 shadow-xl max-w-[220px]">
+                        <div className="bg-white rounded-xl p-3">
+                          <div className="relative w-full h-24 rounded-lg mb-2 overflow-hidden">
+                            <img
+                              src={sideImg2}
+                              alt="Marina Gate 1, Dubai Marina"
+                              className="w-full h-full object-cover"
+                            />
+                          </div>
+                          <div className="text-sm">
+                            <p className="font-medium mb-1">
+                              Marina Gate 1, Dubai Marina
+                            </p>
+                            <p className="text-[#2FB183] text-[16px] font-bold">
+                              +12.4%
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Earn section - Yellow background */}
+                <div
+                  className={`absolute w-full transition-opacity duration-700 ease-in-out ${
+                    activeSection === 2 ? "opacity-100" : "opacity-0"
+                  }`}
+                >
+                  <div className="pl-6 w-full relative">
+                    <div
+                      className="max-h-[456px] max-w-[548px] rounded-3xl p-6 lg:p-12 relative z-0 overflow-hidden"
+                      style={{ backgroundColor: "#FFC947" }}
+                    >
+                      {/* Main phone mockup */}
+                      <div className="relative z-20 mx-auto max-w-sm">
+                        <div className="h-6 relative"></div>
+                        <div className="relative">
+                          <div className="h-full object-contain relative overflow-hidden">
+                            {/* Main property image */}
+                            <img
+                              src={pakisland}
+                              alt="Earn visualization"
+                              className="w-[295px] mx-auto object-contain"
+                            />
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Property card - Top right */}
+                      <div className="absolute top-30 z-20 right-20 transform rotate-5 shadow-xl max-w-[140px]">
+                        <div className="bg-white rounded-xl p-3">
+                          <div className="relative w-full h-20 rounded-lg mb-2">
+                            <img
+                              src={sideImg3}
+                              alt="Boulevard Point, Downtown Dubai"
+                              className="w-full h-full object-cover rounded-lg"
+                            />
+                          </div>
+                          <div className="text-sm">
+                            <p className="font-medium mb-1">
+                              Boulevard Point, Downtown Dubai
+                            </p>
+                            <p className="text-[#30D48C] font-bold">+10.4%</p>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Property card - Bottom left */}
+                      <div className="absolute bottom-10 left-10 z-10 transform -rotate-12 shadow-xl max-w-[220px]">
+                        <div className="bg-white rounded-xl p-3">
+                          <div className="relative w-full h-24 rounded-lg mb-2 overflow-hidden">
+                            <img
+                              src={sideImg2}
+                              alt="Marina Gate 1, Dubai Marina"
+                              className="w-full h-full object-cover"
+                            />
+                          </div>
+                          <div className="text-sm">
+                            <p className="font-medium mb-1">
+                              Marina Gate 1, Dubai Marina
+                            </p>
+                            <p className="text-[#2FB183] text-[16px] font-bold">
+                              +12.4%
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Sell section - Blue background */}
+                <div
+                  className={`absolute w-full transition-opacity duration-700 ease-in-out ${
+                    activeSection === 3 ? "opacity-100" : "opacity-0"
+                  }`}
+                >
+                  <div className="pl-6 w-full relative">
+                    <div
+                      className="max-h-[456px] max-w-[548px] rounded-3xl p-6 lg:p-12 relative z-0 overflow-hidden"
+                      style={{ backgroundColor: "#4E63BD" }}
+                    >
+                      {/* Main phone mockup */}
+                      <div className="relative z-20 mx-auto max-w-sm">
+                        <div className="h-6 relative"></div>
+                        <div className="relative">
+                          <div className="h-full object-contain relative overflow-hidden">
+                            {/* Main property image */}
+                            <img
+                              src={pakisland}
+                              alt="Sell visualization"
+                              className="w-[295px] mx-auto object-contain"
+                            />
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Property card - Top right */}
+                      <div className="absolute top-30 z-20 right-20 transform rotate-5 shadow-xl max-w-[140px]">
+                        <div className="bg-white rounded-xl p-3">
+                          <div className="relative w-full h-20 rounded-lg mb-2">
+                            <img
+                              src={sideImg3}
+                              alt="Boulevard Point, Downtown Dubai"
+                              className="w-full h-full object-cover rounded-lg"
+                            />
+                          </div>
+                          <div className="text-sm">
+                            <p className="font-medium mb-1">
+                              Boulevard Point, Downtown Dubai
+                            </p>
+                            <p className="text-[#30D48C] font-bold">+10.4%</p>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Property card - Bottom left */}
+                      <div className="absolute bottom-10 left-10 z-10 transform -rotate-12 shadow-xl max-w-[220px]">
+                        <div className="bg-white rounded-xl p-3">
+                          <div className="relative w-full h-24 rounded-lg mb-2 overflow-hidden">
+                            <img
+                              src={sideImg2}
+                              alt="Marina Gate 1, Dubai Marina"
+                              className="w-full h-full object-cover"
+                            />
+                          </div>
+                          <div className="text-sm">
+                            <p className="font-medium mb-1">
+                              Marina Gate 1, Dubai Marina
+                            </p>
+                            <p className="text-[#2FB183] text-[16px] font-bold">
+                              +12.4%
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          ))}
-        </div>
 
-        {/* Desktop view with sticky phone */}
-        <div className="relative hidden md:flex md:flex-row">
-          {/* Left side: scrollable text content */}
-          <div className="md:w-1/2 md:pr-12">
-            {sections.map((section, index) => (
-              <div
-                key={section.id}
-                data-index={index}
-                className={`section-trigger py-32 md:py-40 px-4 md:px-8 ${
-                  index === activeSection ? "opacity-100" : "opacity-40"
-                } transition-opacity duration-300`}
-              >
-                <div>
-                  <h3
-                    className={`${section.accentColor} text-lg font-medium mb-3`}
-                  >
-                    {section.title}
-                  </h3>
-                  <h2
-                    className={`${section.textColor} text-3xl md:text-4xl font-bold mb-4`}
-                  >
-                    {section.heading}
-                  </h2>
-                  <p className={`${section.textColor} opacity-80 text-lg mb-6`}>
-                    {section.description}
-                  </p>
-                  {section.extraContent}
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Right side: sticky phone mockup */}
-          <div className="hidden md:block md:w-1/2 sticky top-0 h-screen">
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="relative w-[380px] h-[780px]">
-                {sections.map((section, index) => (
-                  <motion.div
-                    key={section.id}
-                    className={`absolute inset-0 ${section.bgColor} rounded-3xl p-8 flex items-center justify-center overflow-hidden shadow-xl`}
-                    initial={{ opacity: 0, scale: 0.9, y: 40 }}
-                    animate={{
-                      opacity: index === activeSection ? 1 : 0,
-                      scale: index === activeSection ? 1 : 0.9,
-                      y: index === activeSection ? 0 : 40,
-                    }}
-                    transition={{ duration: 0.5 }}
-                  >
-                    {/* Phone mockup with app screenshot */}
-                    <div className="relative w-full h-full">
-                      <div className="bg-white rounded-2xl shadow-lg overflow-hidden w-full h-full flex items-center justify-center">
-                        <img
-                          src={section.appImageUrl}
-                          alt={`${section.title} app screenshot`}
-                          className="object-cover w-full h-full"
-                        />
-                      </div>
-
-                      {/* Floating UI elements specific to each section */}
-                      {section.id === "browse" && (
-                        <div className="absolute right-[-30px] top-[20%] bg-white rounded-2xl shadow-xl p-3 transform rotate-6">
-                          <img
-                            src="/images/ui/property-card.jpg"
-                            alt="Property"
-                            className="w-32 h-20 object-cover rounded-lg"
-                          />
-                        </div>
-                      )}
-
-                      {section.id === "invest" && (
-                        <div className="absolute bottom-[20%] right-[-20px] bg-white rounded-2xl shadow-xl p-3">
-                          <div className="font-medium">AED 500</div>
-                          <div className="text-sm text-gray-500">~$136.15</div>
-                        </div>
-                      )}
-
-                      {section.id === "earn" && (
-                        <div className="absolute top-[15%] left-[-20px] bg-white rounded-2xl shadow-xl p-3">
-                          <div className="text-sm">All time returns</div>
-                          <div className="font-bold">AED 89,000</div>
-                          <span className="inline-block bg-green-100 text-green-600 text-xs rounded-full px-2 py-0.5">
-                            30.8%
-                          </span>
-                        </div>
-                      )}
-
-                      {section.id === "sell" && (
-                        <div className="absolute top-[60%] right-[-30px] bg-white rounded-2xl shadow-xl p-2 transform rotate-12">
-                          <img
-                            src="/images/ui/property-card-2.jpg"
-                            alt="Property"
-                            className="w-24 h-16 object-cover rounded-lg"
-                          />
-                        </div>
-                      )}
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
+            {/* Step indicators */}
+            <div className="flex justify-center mt-8">
+              {steps.map((_, index) => (
+                <div
+                  key={index}
+                  className={`w-2 h-2 rounded-full mx-1 ${
+                    index <= activeSection && hasScrolledToSection
+                      ? "bg-[#41CE8E]"
+                      : "bg-gray-300"
+                  }`}
+                />
+              ))}
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      </section>
+
+      {/* Next content after all texts/images have been viewed */}
+      <div className="py-10"></div>
+    </>
   );
 };
 

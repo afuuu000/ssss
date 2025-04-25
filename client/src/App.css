@@ -92,18 +92,7 @@ a {
   }
 }
 
-/* Custom phone animations */
-.phone-animation-1 {
-  animation: float 6s ease-in-out infinite;
-}
 
-.phone-animation-2 {
-  animation: float 6s ease-in-out 1s infinite;
-}
-
-.phone-animation-3 {
-  animation: float 6s ease-in-out 2s infinite;
-}
 
 /* Framer Motion custom animations */
 .framer-opacity {
@@ -135,22 +124,5 @@ a {
   transform: scale(0.9);
 }
 
-/* Custom utility classes for mobile optimization */
-@media (max-width: 768px) {
-  .text-center-mobile {
-    text-align: center;
-  }
 
-  .mx-auto-mobile {
-    margin-left: auto;
-    margin-right: auto;
-  }
 
-  .stake-logo {
-    max-width: 100px;
-  }
-
-  .mobile-menu-overlay {
-    background: rgba(255, 255, 255, 0.95);
-  }
-}
