@@ -84,8 +84,8 @@ const Testimonials = () => {
           <div className="h-0.5 bg-[#EAEAEA] w-full relative mb-10">
             <motion.div
               className="h-0.5 bg-[#30D48C] w-[33.33%] absolute top-0"
-              initial={{ left: `${activeStory * 33.33}%` }}
-              animate={{ left: `${activeStory * 33.33}%` }}
+              initial={{ left: `${activeStory * 33.33}%` }} // Correct interpolation syntax
+              animate={{ left: `${activeStory * 33.33}%` }} // Correct interpolation syntax
               transition={{ duration: 0.3 }}
             />
           </div>
@@ -108,7 +108,7 @@ const Testimonials = () => {
                   />
                 </div>
                 <div className="text-left">
-                  <h3 className="text-lg font-medium text-[#121726]">
+                  <h3 className="text-lg font-medium text-[#121726] sm:font-extralight">
                     {story.name}
                   </h3>
                   <p className="text-sm ">{story.role}</p>
@@ -121,11 +121,11 @@ const Testimonials = () => {
         {/* Testimonial content */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-[1000px] mx-auto">
           {/* Video section - Left side */}
-          <div className=" rounded-xl overflow-hidden aspect-video relative">
+          <div className=" rounded-xl overflow-hidden h-full w-full aspect-video relative">
             <video
               ref={videoRef}
               src={successStories[activeStory].videoUrl}
-              className="w-full h-full object-contain"
+              className="w-full h-full object-cover"
               poster={successStories[activeStory].avatarUrl}
               preload="metadata"
             />
@@ -156,7 +156,9 @@ const Testimonials = () => {
               <span className="text-black text-[22px] font-semibold">
                 sta<span className="text-[#30D48C]">k</span>e
               </span>
-              <span className="ml-2 text-[#1A1C1E] text-[18px]">Testimonials</span>
+              <span className="ml-2 text-[#1A1C1E] text-[18px]">
+                Testimonials
+              </span>
             </div>
 
             {/* Quote start */}

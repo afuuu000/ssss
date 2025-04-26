@@ -27,30 +27,34 @@ const HowItWorks = () => {
       const sectionTop = sectionRect.top;
       const windowHeight = window.innerHeight;
 
-      // Check if section is in view - start animation when section top reaches 1/3 of viewport height
-      const sectionInView = sectionTop < windowHeight / 3;
-      setHasScrolledToSection(sectionInView);
+      // Check if we've scrolled to the section
+      const inView = sectionTop < windowHeight * 1.5; // When section is 60% into view
+      setHasScrolledToSection(inView);
 
-      // Calculate scroll position relative to the section
-      if (sectionInView) {
-        // Calculate progress based on how far we've scrolled into the section
-        // This starts at 0 when section is at 1/3 of viewport and reaches 1 when we've scrolled through the section
-        const scrolledAmount = Math.min(
-          sectionHeight * 0.7, // Only use 70% of section height for scroll progress
-          Math.max(0, windowHeight / 3 - sectionTop)
-        );
-
-        const progress = scrolledAmount / (sectionHeight * 0.7);
-        setScrollProgress(Math.min(1, Math.max(0, progress)));
-
-        // Determine which step is active based on progress
-        const newActiveSection = Math.min(3, Math.floor(progress * 4));
-        setActiveSection(newActiveSection);
-      } else {
-        // Reset when section is not in view
+      // Only process scroll if section is in view
+      if (!inView) {
+        // Reset progress but keep first section active for display
         setScrollProgress(0);
-        setActiveSection(0);
+        return;
       }
+
+      // Calculate how far we've scrolled through the section
+      let progress = 0;
+
+      if (sectionTop <= windowHeight / 4) {
+        // Start animation when section is halfway into viewport
+        progress = Math.min(
+          1,
+          Math.abs(sectionTop - windowHeight / 2) /
+            (sectionHeight - windowHeight)
+        );
+      }
+
+      setScrollProgress(progress);
+
+      // Determine which step is active based on scroll progress
+      const newActiveSection = Math.min(3, Math.floor(progress * 4));
+      setActiveSection(newActiveSection);
     };
 
     window.addEventListener("scroll", handleScroll);

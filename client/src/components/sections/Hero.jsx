@@ -25,22 +25,27 @@ const Hero = () => {
 
   return (
     <section className="md:py-16 overflow-hidden relative bg-gradient-to-r from-[#F6F7F9] via-white to-[#E8F9F1] py-30">
-      <div className="container mx-auto px-4 max-w-[1200px]">
+      <div className="container mx-auto px-4 max-w-[1200px] ">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mt-42">
-          <div className="max-w-xl mx-auto lg:mx-0 text-center lg:text-left">
+          <div className="max-w-xl mx-auto lg:mx-0 text-center lg:text-left ">
             <div className="inline-flex items-center bg-green-50  border-green-300 border rounded-full px-4 py-1 text-sm mb-8 mx-auto lg:mx-0">
               <span className="flex h-2 w-2 relative mr-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
               </span>
-              <span className="text-green-600 font-medium">10.1% average investor returns in 2024</span>
+              <span className="text-green-600 font-medium">
+                10.1% average investor returns in 2024
+              </span>
             </div>
 
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4 sm:mb-6">
-              Build your wealth through <span className="text-[#41CE8E]">real estate</span>
+              Build your wealth through{" "}
+              <span className="text-[#41CE8E]">real estate</span>
             </h1>
             <p className="text-[16px] tracking-tighter font-medium text-gray-600 mb-8">
-              Thousands of investors all over the world are using Stake to access income generating real estate deals in high growth markets, from only AED 500
+              Thousands of investors all over the world are using Stake to
+              access income generating real estate deals in high growth markets,
+              from only AED 500
             </p>
 
             <div className="flex justify-center lg:justify-start gap-1">
@@ -66,7 +71,7 @@ const Hero = () => {
           </div>
 
           {/* Right side phones - with responsive adjustments */}
-          <div className="relative h-[350px] sm:h-[450px] md:h-[550px] lg:h-[600px] mt-10 lg:mt-0 mx-auto lg:mx-0 w-full max-w-[650px]">
+          <div className="relative h-[350px] sm:h-[400px] md:h-[550px] mt-20 lg:h-[600px] lg:mt-0 mx-auto lg:mx-0 w-full max-w-[650px]">
             {/* Property phone on left */}
             <motion.div
               className="absolute left-[-10px] sm:left-[-32px] bottom-32 sm:bottom-44 lg:bottom-44 md:-rotate-20 transform origin-left"
@@ -76,7 +81,7 @@ const Hero = () => {
                 <img
                   src={property}
                   alt="Property screen"
-                  className="w-[220px] sm:w-[280px] lg:w-[310px]"
+                  className="w-[170px] sm:w-[280px] lg:w-[310px]"
                 />
               </div>
             </motion.div>

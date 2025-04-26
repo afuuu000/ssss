@@ -6,8 +6,8 @@ import pakisland from "../../assets/images/pakislands.png";
 const DubaiFunds = () => {
   return (
     <div className="bg-[#F6F7F9]">
-      <section className=" py-20 overflow-hidden max-w-[1200px] mx-auto">
-        <div className="container bg-white  rounded-2xl  mx-auto px-12 py-10">
+      <section className="  overflow-hidden max-w-[1200px] mx-auto">
+        <div className="container bg-white  rounded-t-2xl  mx-auto px-12 py-10">
           <div className="flex flex-col lg:flex-row items-center  gap-8">
             {/* Phone image mockup - Left */}
             <div className="pl-6 w-full lg:w-1/2 relative">
@@ -70,7 +70,7 @@ const DubaiFunds = () => {
             </div>
 
             {/* Content - Right */}
-            <div className="w-full lg:w-1/2 text-left ">
+            <div className="w-full lg:w-1/2 text-left pl-6 ">
               <div className="inline-flex items-center border border-[#D1D3D7] rounded-full px-3 py-2 text-sm mb-4">
                 <div className="w-6 h-6 mr-4 relative">
                   <div className="absolute inset-0 rounded-full overflow-hidden">

@@ -10,8 +10,8 @@ import {
 
 const Footer = () => {
   return (
-    <footer className="bg-[#121C30] text-white py-10 md:py-16">
-      <div className="container mx-auto px-4 max-w-[1000px] md:w-[1000px]">
+    <footer className="bg-[#121C30] text-white py-44 sm:py-16  md:py-16 lg:py-16 ">
+      <div className="container mx-auto px-4  md:w-[1000px]">
         {/* Logo */}
         <div className="mb-8">
           <Link to="/" className="flex items-center">

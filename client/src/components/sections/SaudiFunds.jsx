@@ -5,9 +5,9 @@ import pakisland from "../../assets/images/alnakhlahills.png";
 import sflag from "../../assets/images/Flag_of_Saudi_Arabia.svg";
 const SaudiFunds = () => {
   return (
-    <div className="bg-[#F6F7F9]">
+    <div className="bg-[#F6F7F9] ">
       <section className="  overflow-hidden max-w-[1200px] mx-auto">
-        <div className=" container bg-white  rounded-2xl  mx-auto px-12 py-10 ">
+        <div className=" container bg-white  rounded-b-2xl  mx-auto px-12 py-10 ">
           <div className="flex flex-col lg:flex-row items-center ">
             {/* Content - Right */}
             <div className="w-full lg:w-1/2 text-left pl-6">
@@ -38,14 +38,14 @@ const SaudiFunds = () => {
               <div className="flex flex-wrap gap-4">
                 <a
                   href="#"
-                  className="inline-flex items-center justify-center bg-[#121C30] text-white px-4 py-3 rounded-lg font-medium"
+                  className="inline-flex mb-2 items-center justify-center bg-[#121C30] text-white px-4 py-3 rounded-lg font-medium"
                 >
                   Learn more
                 </a>
               </div>
             </div>
             {/* Phone image mockup - Left */}
-            <div className="w-full lg:w-1/2 relative">
+            <div className="pl-6 w-full lg:w-1/2 relative">
               <div className="bg-[#007D8B] max-h-[456px] max-w-[548px]  rounded-3xl p-6 lg:p-12 relative z-0 overflow-hidden">
                 {/* Main phone mockup */}
                 <div className="relative z-20 mx-auto max-w-sm">
