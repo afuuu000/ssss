@@ -5,9 +5,9 @@ import pakisland from "../../assets/images/pakislands.png";
 
 const DubaiFunds = () => {
   return (
-    <div className="bg-[#F6F7F9]">
+    <div className="bg-[#F6F7F9] rounded-2xl">
       <section className="  overflow-hidden max-w-[1200px] mx-auto">
-        <div className="container bg-white  rounded-t-2xl  mx-auto px-12 py-10">
+        <div className="container bg-white  rounded-2xl  mx-auto px-12 py-10">
           <div className="flex flex-col lg:flex-row items-center  gap-8">
             {/* Phone image mockup - Left */}
             <div className="pl-6 w-full lg:w-1/2 relative">

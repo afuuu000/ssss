@@ -5,9 +5,9 @@ import pakisland from "../../assets/images/alnakhlahills.png";
 import sflag from "../../assets/images/Flag_of_Saudi_Arabia.svg";
 const SaudiFunds = () => {
   return (
-    <div className="bg-[#F6F7F9] ">
+    <div className="bg-[#F6F7F9] py-10 rounded-2xl">
       <section className="  overflow-hidden max-w-[1200px] mx-auto">
-        <div className=" container bg-white  rounded-b-2xl  mx-auto px-12 py-10 ">
+        <div className=" container bg-white  rounded-2xl  mx-auto px-12 py-10 ">
           <div className="flex flex-col lg:flex-row items-center ">
             {/* Content - Right */}
             <div className="w-full lg:w-1/2 text-left pl-6">
