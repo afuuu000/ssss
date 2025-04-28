@@ -1,11 +1,23 @@
 import React, { useEffect, useRef, useState } from "react";
 import { motion, useScroll } from "framer-motion";
-import sideImg2 from "../../assets/images/marinapull.avif";
-import sideImg3 from "../../assets/images/burjkhalifa.avif";
-import pakisland from "../../assets/images/pakislands.png";
+import mobdub from "../../assets/images/propertiesmarina.png";
+import mobdub2 from "../../assets/images/lepont.avif";
+import mobdub3 from "../../assets/images/mobileportfolio.avif";
+import mobdub4 from "../../assets/images/hittin.jpg";
+import burjarab from "../../assets/images/burjalarab.avif";
+import citystrreet from "../../assets/images/dubaicitywalk.avif";
+import propbg from "../../assets/images/propbg.avif";
+import notch from "../../assets/images/notch.avif";
+import lebg from "../../assets/images/lepontbgtop.avif";
+import invest from "../../assets/images/invest.png";
 import visa from "../../assets/images/visa.png";
 import master from "../../assets/images/master.png";
 import apple from "../../assets/images/apple.png";
+import logo from "../../assets/images/Klogo.avif";
+import onlasgreen from "../../assets/images/onlasegreen.avif";
+import jbr from "../../assets/images/jbr.avif";
+import threebulid from "../../assets/images/threebuildings.avif";
+
 const HowItWorks = () => {
   const sectionRef = useRef(null);
   const textSectionRef = useRef(null);
@@ -20,7 +32,7 @@ const HowItWorks = () => {
       subtitle: "Access prime real estate across multiple markets",
       description:
         "Sign up in less than 3 minutes and browse our collection of global properties and funds, sourced by experts",
-      mainImage: pakisland,
+      mainImage: mobdub,
       bgColor: "#30D48C",
       extraContent: (
         <div className="flex gap-3 mt-6">
@@ -47,7 +59,7 @@ const HowItWorks = () => {
       subtitle: "Grab a piece of the ones you love, from only AED 500",
       description:
         "Skip the hassle, and buy shares in your favourite deals, no matter where you are in the world.",
-      mainImage: pakisland,
+      mainImage: mobdub2,
       bgColor: "#121C30",
       extraContent: (
         <div className="flex gap-3 mt-6">
@@ -65,7 +77,7 @@ const HowItWorks = () => {
       subtitle: "Enjoy regular passive income with no effort",
       description:
         "Sit back and earn consistent rental income from your brand new real estate portfolio",
-      mainImage: pakisland,
+      mainImage: mobdub3,
       bgColor: "#FFD146",
       extraContent: (
         <div className="flex items-center gap-2 mt-6 text-gray-700">
@@ -91,7 +103,7 @@ const HowItWorks = () => {
       subtitle: "Tap into liquidity when you need it most",
       description:
         "Realise your full investment appreciation at maturity or take early profits by selling within our community",
-      mainImage: pakisland,
+      mainImage: mobdub4,
       bgColor: "#FFFFFF",
       extraContent: (
         <div className="space-y-4 mt-6">
@@ -168,35 +180,43 @@ const HowItWorks = () => {
     };
   }, [steps.length]);
 
+  // Add a responsive styles object
+  const responsiveStyles = {
+    // Invisible on small screens, but added via CSS
+    "@media (max-width: 768px)": {
+      display: "none",
+    },
+  };
+
   return (
     <div className="bg-[#F6F7F9]">
       <div
         ref={sectionRef}
-        className="relative  py-30 max-w-[1150px] mx-auto"
+        className="relative py-30 max-w-[1180px] mx-auto"
         style={{ minHeight: "200vh" }} // Make section tall enough to scroll
       >
-        <div className="container mx-auto px-4 ">
+        <div className="container mx-auto px-4">
           {/* Section title */}
-          <div className="text-center mb-20">
+          <div className="text-center mb-20 md:mb-16 sm:mb-12">
             <h2 className="text-[16px] text-[#209476] font-bold mb-4">
               How It Works
             </h2>
-            <h3 className="text-[#121C30] text-5xl max-w-2xl mx-auto">
+            <h3 className="text-[#121C30] text-5xl max-w-2xl mx-auto md:text-4xl sm:text-3xl px-4">
               Build an income-generating real estate portfolio, easily
             </h3>
           </div>
 
-          {/* Main content */}
+          {/* Main content - add responsive classes */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-2">
-            {/* Left side - Scrolling text content */}
+            {/* Left side - adjust spacing for mobile */}
             <div
               ref={textSectionRef}
-              className="space-y-[70vh]" // Space sections apart for scrolling
+              className="space-y-[70vh] md:space-y-[60vh] sm:space-y-[50vh]" // Reduce spacing on mobile
             >
               {steps.map((step, index) => (
                 <div
                   key={index}
-                  className="min-h-[70vh] flex items-center max-w-[500px]"
+                  className="min-h-[70vh] md:min-h-[60vh] sm:min-h-[50vh] flex items-center max-w-[500px] px-4"
                 >
                   <div
                     className={`transition-all duration-300 ${
@@ -204,15 +224,15 @@ const HowItWorks = () => {
                     }`}
                   >
                     <h3
-                      className="text-2xl text-[#209476] font-semibold mb-4"
+                      className="text-2xl text-[#209476] font-semibold mb-4 sm:text-xl"
                       style={{ color: step.titleColor }}
                     >
                       {step.title}
                     </h3>
-                    <h4 className="text-4xl text-[#121C30] md:text-4xl font-bold mb-6">
+                    <h4 className="text-4xl text-[#121C30] md:text-3xl sm:text-2xl font-bold mb-6">
                       {step.subtitle}
                     </h4>
-                    <p className="text-[#5A616E] text-[16px] mb-6">
+                    <p className="text-[#5A616E] text-[16px] mb-6 sm:text-[14px]">
                       {step.description}
                     </p>
                     {step.extraContent}
@@ -221,84 +241,321 @@ const HowItWorks = () => {
               ))}
             </div>
 
-            {/* Right side - Fixed image section */}
-            <div className="hidden lg:block">
+            {/* Right side - Images (now visible on mobile) */}
+            <div className="lg:block">
+              <style jsx global>{`
+                @media (max-width: 768px) {
+                  /* Make all image sections visible on mobile */
+                  [class*="transition-opacity"] {
+                    position: relative !important;
+                    opacity: 100 !important;
+                    margin-bottom: 2rem !important;
+                    height: auto !important;
+                  }
+
+                  /* Stack all sections vertically on mobile */
+                  .sticky {
+                    position: relative !important;
+                    height: auto !important;
+                  }
+
+                  /* Make text smaller on mobile */
+                  .text-section {
+                    min-height: auto;
+                    padding: 2rem 0;
+                  }
+
+                  /* Adjust image sizes for mobile */
+                  img {
+                    max-width: 100%;
+                  }
+                }
+              `}</style>
               <div className="sticky top-1/4">
-                {steps.map((step, index) => (
-                  <div
-                    key={index}
-                    className={`transition-opacity duration-700 ease-in-out ${
-                      activeSection === index ? "opacity-100" : "opacity-0"
-                    }`}
-                    style={{
-                      position: "absolute",
-                      top: 0,
-                      left: 0,
-                      width: "100%",
-                      height: "100%",
-                    }}
-                  >
-                    <div className="pl-4 w-full relative">
+                {/* Step 1 image section */}
+                <div
+                  className={`transition-opacity duration-700 ease-in-out ${
+                    activeSection === 0 ? "opacity-100" : "opacity-0"
+                  }`}
+                  style={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    width: "100%",
+                    height: "100%",
+                  }}
+                >
+                  <div className="pl-4 w-full relative">
+                    <div
+                      className="max-h-[430px] max-w-[680px] rounded-3xl p-4 lg:p-12 relative z-0 overflow-hidden"
+                      style={{ backgroundColor: steps[0].bgColor }}
+                    >
+                      <img
+                        src={propbg}
+                        alt="prop bg"
+                        className="absolute top-35 left-7  w-[160px] h-[180px] object-cover  rotate-[-13deg] z-[-1]"
+                      />
+                      <img
+                        src={citystrreet}
+                        alt="Dubai City Walk"
+                        className="absolute right-11 top-10 w-[150px] h-[170px] object-cover  rotate-[18deg] z-10"
+                      />
+                      {/* Overlay: Top right floating image */}
+                      <img
+                        src={burjarab}
+                        alt="Burj Al Arab"
+                        className="absolute right-[40px] bottom-1 w-[176px] h-[184px] object-cover z-10"
+                      />
+                      <img
+                        src={steps[0].mainImage}
+                        alt="Step 1 visualization"
+                        className="w-[330px] mt-9 mx-auto object-contain "
+                      />
+                    </div>
+                  </div>
+                </div>
+                {/* Step 2 image section */}
+                <div
+                  className={`transition-opacity duration-700 ease-in-out ${
+                    activeSection === 1 ? "opacity-100" : "opacity-0"
+                  }`}
+                  style={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    width: "100%",
+                    height: "100%",
+                  }}
+                >
+                  <div className="pl-4 w-full relative">
+                    <div
+                      className="max-h-[430px] max-w-[650px] rounded-3xl p-2 lg:p-10 relative z-0 overflow-hidden"
+                      style={{ backgroundColor: steps[1].bgColor }}
+                    >
+                      <img
+                        src={steps[1].mainImage}
+                        alt="Step 2 visualization"
+                        className="w-[320px] mt-12 mx-auto object-contain"
+                      />
+
+                      <img
+                        src={invest}
+                        alt="prop bg"
+                        className="absolute top-60 left-2 h-[220px]  object-cover   z-[10]"
+                      />
+                      <img
+                        src={lebg}
+                        alt="dubai bg"
+                        className="absolute left-82 top-1 w-[223px] h-[223px] object-cover z-[-1]"
+                      />
+                      <img
+                        src={notch}
+                        alt="notch"
+                        className="absolute left-58 top-28  object-cover w-[95px] z-10"
+                      />
                       <div
-                        className="max-h-[430px] max-w-[650px] rounded-3xl p-4 lg:p-12 relative z-0 overflow-hidden"
-                        style={{ backgroundColor: step.bgColor }}
+                        className="absolute"
+                        style={{
+                          left: "90px",
+                          top: "60px",
+                          zIndex: 30,
+                          width: "80px",
+                          height: "80px",
+                          background: "#30D48C",
+                          borderRadius: "50%",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          boxShadow: "0 8px 32px 0 rgba(60,60,60,0.10)",
+                          rotate: "-18deg",
+                        }}
                       >
-                        {/* Main image */}
-                        <div className="relative z-20 mx-auto max-w-sm">
-                          <div className="relative">
-                            <div className="h-full object-contain relative overflow-hidden">
-                              <img
-                                src={step.mainImage}
-                                alt={`${step.title} visualization`}
-                                className="w-[295px] mx-auto object-contain"
-                              />
+                        {/* White trolley SVG icon */}
+                        <svg
+                          width="42"
+                          height="42"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M7 18C6.44772 18 6 18.4477 6 19C6 19.5523 6.44772 20 7 20C7.55228 20 8 19.5523 8 19C8 18.4477 7.55228 18 7 18Z"
+                            fill="white"
+                          />
+                          <path
+                            d="M17 18C16.4477 18 16 18.4477 16 19C16 19.5523 16.4477 20 17 20C17.5523 20 18 19.5523 18 19C18 18.4477 17.5523 18 17 18Z"
+                            fill="white"
+                          />
+                          <path
+                            d="M7.16 15H16.74C17.37 15 17.92 14.59 18.09 13.98L20.36 6.59C20.49 6.18 20.18 5.75 19.75 5.75H6.21L5.27 2.61C5.13 2.22 4.76 2 4.36 2H2V4H3.42L6.6 13.59C6.77 14.18 7.32 14.59 7.96 14.59L7.16 15ZM6.16 7.75H18.31L16.36 13H8.53L6.16 7.75Z"
+                            fill="white"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {/* Step 3 image section */}
+                <div
+                  className={`transition-opacity duration-700 ease-in-out ${
+                    activeSection === 2 ? "opacity-100" : "opacity-0"
+                  }`}
+                  style={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    width: "100%",
+                    height: "100%",
+                  }}
+                >
+                  <div className="pl-4 w-full relative">
+                    <div
+                      className="max-h-[430px] max-w-[650px] rounded-3xl p-4 lg:p-12 relative z-0 overflow-hidden"
+                      style={{ backgroundColor: steps[2].bgColor }}
+                    >
+                      <img
+                        src={steps[2].mainImage}
+                        alt="Step 3 visualization"
+                        className="w-[360px] mt-11 mx-auto object-contain"
+                      />
+
+                      {/* Stake notification overlay */}
+                      <div
+                        className="absolute z-30"
+                        style={{
+                          top: "190px",
+                          left: "50%",
+                          transform: "translateX(-50%)",
+                          width: "320px",
+                          maxWidth: "90%",
+                        }}
+                      >
+                        <div
+                          className="bg-white p-3 rounded-xl shadow-lg flex items-center gap-3 "
+                          style={{
+                            boxShadow: "3px 3px 3px 3px #FFE8A3",
+                          }}
+                        >
+                          <div className="bg-white rounded-md overflow-hidden w-12 h-12 flex-shrink-0">
+                            <img
+                              src={logo}
+                              alt="Stake Logo"
+                              className="w-full h-full object-contain"
+                            />
+                          </div>
+                          <div>
+                            <div className="font-semibold text-gray-800">
+                              Stake
+                            </div>
+                            <div className="text-gray-600 text-sm">
+                              You've been paid AED 18,000 in rent
                             </div>
                           </div>
                         </div>
+                      </div>
 
-                        {/* Property card - Top right */}
-                        <div className="absolute top-30 z-20 right-20 transform rotate-5 shadow-xl max-w-[140px]">
-                          <div className="bg-white rounded-xl p-3">
-                            <div className="relative w-full h-20 rounded-lg mb-2">
-                              <img
-                                src={sideImg3}
-                                alt="Boulevard Point, Downtown Dubai"
-                                className="w-full h-full object-cover rounded-lg"
-                              />
-                            </div>
-                            <div className="text-sm">
-                              <p className="font-medium mb-1">
-                                Boulevard Point, Downtown Dubai
-                              </p>
-                              <p className="text-[#30D48C] font-bold">+10.4%</p>
+                      {/* Returns card overlay */}
+                      <div
+                        className="absolute z-30 "
+                        style={{
+                          bottom: "12px",
+                          left: "50%",
+                          transform: "translateX(-50%)",
+                          width: "380px",
+                          maxWidth: "90%",
+                          maxHeight: "100%",
+                        }}
+                      >
+                        <div className="bg-white  rounded-xl shadow-lg py-4 px-4">
+                          <div className="text-gray-600 mb-1">
+                            All time returns
+                          </div>
+                          <div className="flex items-center gap-3 mb-3">
+                            <div className="text-2xl font-bold">AED 89,000</div>
+                            <div className="bg-[#E6F8F1] text-[#30D48C] px-2 py-1 rounded-full text-sm font-medium">
+                              30.8%
                             </div>
                           </div>
-                        </div>
-
-                        {/* Property card - Bottom left */}
-                        <div className="absolute bottom-10 left-10 z-10 transform -rotate-12 shadow-xl max-w-[220px]">
-                          <div className="bg-white rounded-xl p-3">
-                            <div className="relative w-full h-24 rounded-lg mb-2 overflow-hidden">
-                              <img
-                                src={sideImg2}
-                                alt="Marina Gate 1, Dubai Marina"
-                                className="w-full h-full object-cover"
-                              />
-                            </div>
-                            <div className="text-sm">
-                              <p className="font-medium mb-1">
-                                Marina Gate 1, Dubai Marina
-                              </p>
-                              <p className="text-[#2FB183] text-[16px] font-bold">
-                                +12.4%
-                              </p>
+                          <div className="w-full h-4 bg-gray-200 rounded-full overflow-hidden">
+                            <div className="flex h-full">
+                              <div className="bg-[#30D48C] h-full w-1/3"></div>
+                              <div className="bg-[#1A9A74] h-full w-1/3"></div>
+                              <div className="bg-[#FFD146] h-full w-1/3"></div>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                ))}
+                </div>
+                {/* Step 4 image section */}
+                <div
+                  className={`transition-opacity duration-700 ease-in-out ${
+                    activeSection === 3 ? "opacity-100" : "opacity-0"
+                  }`}
+                  style={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    width: "100%",
+                    height: "100%",
+                  }}
+                >
+                  <div className="pl-4 w-full relative">
+                    <div
+                      className="max-h-[430px] max-w-[650px] rounded-3xl p-4 lg:p-12 relative z-0 overflow-hidden"
+                      style={{ backgroundColor: steps[3].bgColor }}
+                    >
+                      {/* Floating image - left */}
+
+                      <img
+                        src={jbr}
+                        alt="JBR Dubai Marina"
+                        className="w-[200px] h-[150px] object-cover rounded-xl  rotate-[-12deg] absolute right-90 top-[160px] z-10"
+                      />
+
+                      {/* Floating image - top right */}
+
+                      <img
+                        src={threebulid}
+                        alt="Properties"
+                        className=" absolute right-10  top-[20px] w-[180px] h-[160px] object-cover rounded-xl  rotate-[15deg] z-999"
+                      />
+                      <img
+                        src={onlasgreen}
+                        alt="Properties"
+                        className=" absolute right-13  bottom-18 w-[160px] h-[140px] object-cover rounded-xl  rotate-[-5deg] z-999"
+                      />
+
+                      {/* Phone frame with main image */}
+                      <div
+                        className="relative mx-auto w-[310px] z-20"
+                        style={{
+                          borderRadius: "36px",
+                          boxShadow:
+                            "0px 0px 0px 6px #121C30, 0px 0px 0px rgba(0, 0, 0, 0.1)",
+                          overflow: "hidden",
+                          padding: "3px",
+                          background: "#121C30",
+                        }}
+                      >
+                        <img
+                          src={notch}
+                          alt="notch"
+                          className="absolute left-26 top-2  object-cover w-[95px] z-10"
+                        />
+
+                        {/* Main image (unchanged) */}
+                        <img
+                          src={steps[3].mainImage}
+                          alt="Step 4 visualization"
+                          className="w-[310px]  object-contain rounded-[28px]"
+                          style={{ borderRadius: "28px" }}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
