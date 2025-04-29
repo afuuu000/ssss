@@ -6,6 +6,16 @@ import certificationIcon from "../../assets/icons/certification.svg";
 import sflag from "../../assets/images/Flag_of_Saudi_Arabia.svg";
 import waid from "../../assets/images/waid.avif";
 import mubadla from "../../assets/images/mubadla.avif";
+import mevp from "../../assets/images/mevp.png";
+import republic from "../../assets/images/republic.avif";
+import aljomiah from "../../assets/images/aljomiah.png";
+import madison from "../../assets/images/mos.png";
+import vinum from "../../assets/images/vinum.png";
+import by from "../../assets/images/by.png";
+import guidance from "../../assets/images/guidnace.svg";
+import CPL from "../../assets/images/cpl.svg";
+import verve from "../../assets/images/verve.png";
+import capital from "../../assets/images/capital.svg";
 const Trust = () => {
   const [activeTab, setActiveTab] = useState("dual");
 
@@ -307,75 +317,71 @@ const Trust = () => {
           <h3 className="text-center text-[18px] font-bold mb-16">
             We're backed by
           </h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-12 items-center justify-items-center">
-            <svg
-              style={{ width: "100%", height: "100%" }}
-              viewBox="0 0 126 35"
-              preserveAspectRatio="none"
-              width="100%"
-              height="100%"
-            >
-              <use href="#svg727047839_934"></use>
-            </svg>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 items-center justify-items-center">
+          <img
+              src={mevp}
+              alt="Wael Group"
+              className="h-30"
+            />
 
             <img
               src={waid}
               alt="Wael Group"
-              className="h-20"
+              className="h-22"
             />
             <img
               src={mubadla}
               alt="Mubadala"
-              className="h-[43px] w-[400px]"
+              className="h-[43px] w-[450px]"
             />
             <img
-              src="/placeholder-logo-4.svg"
+              src={republic}
               alt="Republic"
-              className="h-10 opacity-80"
+              className="h-9"
             />
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-12 items-center justify-items-center mt-12">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 items-center justify-items-center mt-4">
             <img
-              src="/placeholder-logo-5.svg"
+              src={aljomiah}
               alt="Al Jomaih Holding"
-              className="h-10 opacity-80"
+              className="h-30 "
             />
             <img
-              src="/placeholder-logo-6.svg"
+              src={madison}
               alt="Madison Marquette"
-              className="h-10 opacity-80"
+              className="h-25"
             />
             <img
-              src="/placeholder-logo-7.svg"
+              src={vinum}
               alt="Vinium"
-              className="h-10 opacity-80"
+              className="h-30"
             />
             <img
-              src="/placeholder-logo-8.svg"
+              src={by}
               alt="B Venture Partners"
-              className="h-10 opacity-80"
+              className="h-22"
             />
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-12 items-center justify-items-center mt-12">
+          <div className="grid grid-cols-2 md:grid-cols-4  items-center justify-items-center mt-4 ">
             <img
-              src="/placeholder-logo-9.svg"
+              src={guidance}
               alt="Guidance"
-              className="h-10 opacity-80"
+              className="h-10 opacity-80 ml-10"
             />
             <img
-              src="/placeholder-logo-10.svg"
+              src={CPL}
               alt="CPL"
-              className="h-10 opacity-80"
+              className="h-8"
             />
             <img
-              src="/placeholder-logo-11.svg"
+              src={verve}
               alt="Verve"
-              className="h-10 opacity-80"
+              className="h-25 mr-10"
             />
             <img
-              src="/placeholder-logo-12.svg"
+              src={capital}
               alt="Capital Guidance"
-              className="h-10 opacity-80"
+              className="h-10 mr-10"
             />
           </div>
         </div>

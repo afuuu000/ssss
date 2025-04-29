@@ -4,6 +4,7 @@ import Navbar from "./components/layout/Navbar";
 import Footer from "./components/sections/Footer";
 import Hero from "./components/sections/Hero";
 import HowItWorks from "./components/sections/HowItWorks";
+import Featured from "./components/sections/Featured";
 import Testimonials from "./components/sections/Testimonials";
 import DubaiFunds from "./components/sections/DubaiFunds";
 import SaudiFunds from "./components/sections/SaudiFunds";
@@ -67,6 +68,7 @@ function App() {
           <Navbar isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
           <main className="flex-grow">
             <Hero />
+            <Featured />
             <HowItWorks />
             <Stats />
             <DubaiFunds />

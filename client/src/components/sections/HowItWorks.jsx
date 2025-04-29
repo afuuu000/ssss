@@ -398,7 +398,7 @@ const HowItWorks = () => {
 
                 {index === 3 && (
                   <div
-                    className="rounded-2xl p-4"
+                    className="rounded-2xl p-4 "
                     style={{ backgroundColor: step.bgColor }}
                   >
                     <img
