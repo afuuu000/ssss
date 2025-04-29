@@ -140,7 +140,7 @@ const Footer = () => {
           {/* Social Icons */}
           <div className="flex items-center space-x-5 order-1 md:order-3">
             <a
-              href="https://facebook.com/stake"
+              href="https://www.facebook.com/stakeproperties/#"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Facebook"
@@ -148,7 +148,7 @@ const Footer = () => {
               <FaFacebook className="text-white hover:text-green-400 w-5 h-5" />
             </a>
             <a
-              href="https://twitter.com/stake"
+              href="https://twitter.com/GetStake"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Twitter"
@@ -156,7 +156,7 @@ const Footer = () => {
               <FaTwitter className="text-white hover:text-green-400 w-5 h-5" />
             </a>
             <a
-              href="https://instagram.com/stake"
+              href="https://www.instagram.com/get.stake/"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Instagram"
@@ -164,7 +164,7 @@ const Footer = () => {
               <FaInstagram className="text-white hover:text-green-400 w-5 h-5" />
             </a>
             <a
-              href="https://linkedin.com/company/stake"
+              href="https://www.linkedin.com/company/stake/"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn"
@@ -172,7 +172,7 @@ const Footer = () => {
               <FaLinkedin className="text-white hover:text-green-400 w-5 h-5" />
             </a>
             <a
-              href="https://youtube.com/stake"
+              href="https://www.youtube.com/channel/UCl7ANdTMOmKOKXCCs6Fz9IA"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="YouTube"
