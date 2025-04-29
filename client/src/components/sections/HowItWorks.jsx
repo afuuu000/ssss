@@ -24,6 +24,17 @@ const HowItWorks = () => {
   const [activeSection, setActiveSection] = useState(0);
   const [scrollY, setScrollY] = useState(0);
 
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   // Steps data
   const steps = [
     {
@@ -190,6 +201,45 @@ const HowItWorks = () => {
 
   return (
     <div className="bg-[#F6F7F9]">
+    {isMobile ? (
+  <div className="container mx-auto px-4 py-8">
+    <div className="text-center mb-12">
+      <h2 className="text-[16px] text-[#209476] font-bold mb-4">
+        How It Works
+      </h2>
+      <h3 className="text-[#121C30] text-3xl px-4">
+        Build an income-generating real estate portfolio, easily
+      </h3>
+    </div>
+    {steps.map((step, index) => (
+      <div key={index} className="mb-8">
+        {/* Mobile Layout Content */}
+        <div className="mb-6 px-4">
+          <h3 className="text-xl text-[#209476] font-semibold mb-3">
+            {step.title}
+          </h3>
+          <h4 className="text-2xl text-[#121C30] font-bold mb-4">
+            {step.subtitle}
+          </h4>
+          <p className="text-[#5A616E] text-sm mb-4">{step.description}</p>
+          <div className="mobile-extra-content">{step.extraContent}</div>
+        </div>
+        <div className="px-4 overflow-hidden relative z-0 max-h-[300px] ">
+          <div
+            className="rounded-2xl p-4"
+            style={{ backgroundColor: step.bgColor }}
+          >
+            <img
+              src={step.mainImage}
+              alt={`Step ${index + 1}`}
+              className="w-[220px] mt-9 object-contain mx-auto rounded-2xl "
+            />
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+      ) : (
       <div
         ref={sectionRef}
         className="relative py-30 max-w-[1180px] mx-auto"
@@ -211,7 +261,7 @@ const HowItWorks = () => {
             {/* Left side - adjust spacing for mobile */}
             <div
               ref={textSectionRef}
-              className="space-y-[70vh] md:space-y-[60vh] sm:space-y-[50vh]" // Reduce spacing on mobile
+              className="space-y-[70vh] md:space-y-[60vh] sm:space-y-[50vh]" 
             >
               {steps.map((step, index) => (
                 <div
@@ -243,34 +293,6 @@ const HowItWorks = () => {
 
             {/* Right side - Images (now visible on mobile) */}
             <div className="lg:block">
-              <style jsx global>{`
-                @media (max-width: 768px) {
-                  /* Make all image sections visible on mobile */
-                  [class*="transition-opacity"] {
-                    position: relative !important;
-                    opacity: 100 !important;
-                    margin-bottom: 2rem !important;
-                    height: auto !important;
-                  }
-
-                  /* Stack all sections vertically on mobile */
-                  .sticky {
-                    position: relative !important;
-                    height: auto !important;
-                  }
-
-                  /* Make text smaller on mobile */
-                  .text-section {
-                    min-height: auto;
-                    padding: 2rem 0;
-                  }
-
-                  /* Adjust image sizes for mobile */
-                  img {
-                    max-width: 100%;
-                  }
-                }
-              `}</style>
               <div className="sticky top-1/4">
                 {/* Step 1 image section */}
                 <div
@@ -561,6 +583,7 @@ const HowItWorks = () => {
           </div>
         </div>
       </div>
+      )}
     </div>
   );
 };
