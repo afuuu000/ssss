@@ -63,7 +63,7 @@ const SaudiFunds = () => {
                 </div>
 
                 {/* Property card - Top right */}
-                <div className="absolute top-30 z-20 right-20 transform rotate-5 shadow-xl  max-w-[140px]">
+                <div className="absolute top-35 z-20 right-20 transform rotate-5 shadow-xl  max-w-[140px]">
                   <div className="bg-white rounded-xl p-3">
                     <div className="relative  w-full h-20 rounded-lg mb-2 ">
                       <img
