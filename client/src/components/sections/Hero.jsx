@@ -50,7 +50,7 @@ const Hero = () => {
 
             <div className="flex justify-center lg:justify-start gap-1">
               <div className="h-18 w-[150px] rounded">
-                <a href="#applesote">
+                <a href="https://apps.apple.com/ae/app/stake-easy-property-investing/id1591107922?mt=8">
                   <img
                     src={appStoreSVG}
                     alt="Download on App Store"
@@ -59,7 +59,7 @@ const Hero = () => {
                 </a>
               </div>
               <div className="h-18 w-[190px] rounded">
-                <a href="#googleplay">
+                <a href="https://apps.apple.com/ae/app/stake-easy-property-investing/id1591107922?mt=8">
                   <img
                     src={googlePlaySVG}
                     alt="Get it on Google Play"

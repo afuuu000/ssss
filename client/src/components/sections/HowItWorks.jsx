@@ -47,14 +47,14 @@ const HowItWorks = () => {
       bgColor: "#30D48C",
       extraContent: (
         <div className="flex gap-3 mt-6">
-          <a href="#" className="h-24 w-[130px] rounded">
+          <a href="https://apps.apple.com/ae/app/stake-easy-property-investing/id1591107922?mt=8" className="h-24 w-[130px] rounded">
             <img
               src="https://developer.apple.com/app-store/marketing/guidelines/images/badge-download-on-the-app-store.svg"
               alt="Download on App Store"
               className="h-full w-full object-contain rounded"
             />
           </a>
-          <a href="#" className="h-24 w-[170px] rounded">
+          <a href="https://apps.apple.com/ae/app/stake-easy-property-investing/id1591107922?mt=8" className="h-24 w-[170px] rounded">
             <img
               src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
               alt="Get it on Google Play"
