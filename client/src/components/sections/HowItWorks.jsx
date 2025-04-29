@@ -430,7 +430,7 @@ const HowItWorks = () => {
                       <img
                         src={notch}
                         alt="notch"
-                        className="absolute left-[60px] top-1 object-cover w-[60px] z-10"
+                        className="absolute left-[70px] top-1.5 object-cover w-[60px] z-10"
                       />
                       <img
                         src={step.mainImage}
